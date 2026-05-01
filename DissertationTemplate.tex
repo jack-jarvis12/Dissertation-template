@@ -41,6 +41,7 @@
 \usepackage{subcaption}
 \usepackage{hyperref}
 \usepackage{booktabs}
+\usepackage{bm}
 \newcommand{\listingautorefname}{Listing}
 \usepackage{minted}
 \begin{document}
@@ -138,12 +139,7 @@ Project contributions:
 
 \noindent
 
-It is common practice (although totally optional) to acknowledge any
-third-party advice, contribution or influence you have found useful
-during your work.  Examples include support from friends or family, 
-the input of your Supervisor and/or Advisor, external organisations 
-or persons who  have supplied resources of some kind (e.g., funding, 
-advice or time), and so on.
+Thank you to my supervisor, Mike Fraser, whose enthusiasm, support, and expertise made this project possible. Thanks also to my friends and family for their unconditional support throughout my studies. Lastly, thank you to everyone who donated their time and wrists for data collection.
 
 
 % -----------------------------------------------------------------------------
@@ -178,50 +174,37 @@ advice or time), and so on.
 
 \chapter*{Ethics Statement}
 
-{\bf A compulsory section} 
-\vspace{1cm} 
-
-In almost every project, this will be one of the following statements:
-    \begin{itemize}
-        \item ``This project did not require ethical review, as determined by my supervisor, [fill in name]''; or
-        \item ``This project fits within the scope of ethics application 6683, as reviewed by my supervisor, [fill in name]''; or
-        \item ``An ethics application for this project was reviewed and approved by the faculty research ethics committee as application [fill in number]''.
-    \end{itemize}
-    
-See \href{https://cs-uob-individual-project.github.io/ethics/}{the ethics webpage} for more information. If something went wrong and none of those three statements apply, then you should instead explain what happened.
-
+This project fits within the scope of ethics application 6683, as reviewed by my supervisor, Mike Fraser.
 
 % -----------------------------------------------------------------------------
 
 \chapter*{Supporting Technologies}
 
 
-\noindent
-This section should present a detailed summary, in bullet point form, 
-of any third-party resources (e.g., hardware and software components) 
-used during the project.  Use of such resources is always perfectly 
-acceptable: the goal of this section is simply to be clear about how
-and where they are used, so that a clear assessment of your work can
-result.  The content can focus on the project topic itself (rather,
-for example, than including ``I used \mbox{\LaTeX} to prepare my 
-dissertation''); an example is as follows:
-
-\begin{quote}
-\noindent
 \begin{itemize}
-\item I used the Java {\tt BigInteger} class to support my implementation 
-      of RSA.
-\item I used a parts of the OpenCV computer vision library to capture 
-      images from a camera, and for various standard operations (e.g., 
-      threshold, edge detection).
-\item I used an FPGA device supplied by the School, and altered it 
-      to support an open-source UART core obtained from 
-      \url{http://opencores.org/}.
-\item The web-interface component of my system was implemented by 
-      extending the open-source WordPress software available from
-      \url{http://wordpress.org/}.
+    \item The hardware in this project was based on designs and schematics provided by SensIR \cite{McIntosh2017SensIR:Reflection} and GestIR \cite{diamand2025}.
+    \item \textbf{KiCad} was used to design the wristbands.
+    \item \textbf{JLCPCB's PCBA service} was used to manufacture the wristbands.
+    \item The machine learning models and data collection software were adapted from code provided by GestIR \cite{diamand2025}. These were written in Python, using the following libraries:
+    \begin{itemize}
+        \item \textbf{TensorFlow}, \textbf{scikit-learn} and \textbf{numpy} for machine learning
+        \item \textbf{OpenCV} for the data collection software
+    \end{itemize}
+    \item The data processing and statistical software was developed in Python, using the following libraries:
+    \begin{itemize}
+        \item \textbf{Matplotlib} for plotting graphs
+        \item \textbf{numpy}, \textbf{pandas}, \textbf{scipy} and \textbf{statsmodels} for satistics and data processing
+    \end{itemize}
+    \item The following hardware was used:
+    \begin{itemize}
+        \item A \textbf{Teensy 4.1} microcontroller to control LEDs and read photodiode values
+        \item \textbf{VSMB1940X01}, \textbf{TSML1020} and \textbf{IR17-21C/TR8} LEDs
+        \item \textbf{ TEMD7100X01} photodiodes
+        \item \textbf{OPA381} and \textbf{TLV9062} op-amps
+        \item \textbf{ULN2803C} Darlington arrays
+        \item \textbf{74HC595D} shift registers
+    \end{itemize}
 \end{itemize}
-\end{quote}
 
 % -----------------------------------------------------------------------------
 
@@ -288,11 +271,11 @@ $\alpha$ &: & Significance level \\
 \label{chap:context}
 Gesture recognition systems offer the potential to harness hand gestures for control over computer systems, allowing users to interact with technology through intuitive, natural body movements rather than traditional input devices. There are many methods of hand gesture recognition, including camera hand tracking, acoustic sensing and electromyography (EMG), but most devices lack the accuracy, ergonomics and practicality needed for everyday use.
 
-Infrared (IR) based sensing stands out as an accurate, practical method of gesture recognition. Infrared sensing is less susceptible to sensor placement and skin coupling issues than other methods of gesture recognition, for example EMG. IR sensing systems are also relatively cheap and low power compared to other methods of gesture detection, and the possibility of future integration into smartwatch style devices offers a practical, unobtrusive method of integrating gesture recognition into everyday human-computer interaction.
+Infrared (IR) based sensing stands out as an accurate, practical method of gesture recognition. Infrared sensing is less susceptible to sensor placement and skin coupling issues than other methods of gesture recognition, for example, EMG . IR sensing systems are also relatively cheap and low power compared to other methods of gesture detection, and the possibility of future integration into smartwatch style devices offers a practical, unobtrusive method of integrating gesture recognition into everyday human-computer interaction \cite{McIntosh2017SensIR:Reflection}.
 
 Previous work has shown that IR sensing systems can be used in wrist worn devices to accurately detect hand gestures \cite{McIntosh2017SensIR:Reflection} \cite{Khalikov2026WearableControl}. Research has also been conducted into the effectiveness of different IR wavelengths \cite{diamand2025}. 
 
-However, in order for gesture recognition to be a viable method of human computer interaction, devices must be optimised for practicality and user comfort. Many current devices are designed and built as research platforms, utilising bulky bracelets with large through hole components. Also, direct comparisons between optical properties of components, e.g. LED viewing angle, hasn't been possible. This is because there is a limited range of through hole components available, meaning it's difficult to find hardware which singles out properties as independent variables while keeping other properties constant.
+However, in order for gesture recognition to be a viable method of human computer interaction, devices must be optimised for practicality and user comfort. Many current devices are designed and built as research platforms, utilising bulky bracelets with large through hole components. Also, direct comparisons between optical properties of components, e.g., LED viewing angle, have not been possible. This is because there is a limited range of through hole components available, meaning it's difficult to find hardware which singles out properties as independent variables while keeping other properties constant.
 
 % Previous work has shown that wrist worn devices that measure the transmission, reflection and scattering of IR light as it passes through the wrist tissue can be used to accurately classify hand gestures. Research has also investigated the effectiveness of different IR wavelengths. However, many current devices are designed and built as research platforms, utilising large through hole components and bulky bracelets. In order for gesture recognition to be a useful method of everyday human-computer interaction, devices need to be optimised for practicality and user comfort. Also, research singling out other component properties as independent variables, for example the infrared emitter viewing angle, remains sparse.
 
@@ -303,7 +286,7 @@ To address these issues, we present FlexIR: a flexible PCB based wristband capab
 Wrist worn gesture recognition devices offer the ability to use hand gestures in a wide range of human-computer interaction scenarios, such as:
 \begin{itemize}
     \item Immersive control and hand tracking for virtual reality or augmented reality systems
-    \item Natural methods of everyday micro interactions (e.g. clicking through a slideshow or skipping a song) without tethering to traditional input devices such as keyboards, mice, or controllers.
+    \item Natural methods of everyday micro-interactions (e.g., clicking through a slide-show or skipping a song) without tethering to traditional input devices such as keyboards, mice, or controllers.
     \item Accessible controls for people with reduced mobility or motor impairments
     \item Lightweight, unobtrusive sensing and monitoring systems for sports science and physiotherapy applications
 \end{itemize}
@@ -321,25 +304,16 @@ Wrist worn gesture recognition devices offer the ability to use hand gestures in
 
 \begin{table}[htp]
     \centering
-    % Add vertical padding (default is 1.0)
-    \renewcommand{\arraystretch}{1.5} 
-    
-    % Add horizontal padding (default is usually 6pt)
-    \setlength{\tabcolsep}{10pt}
-    \begin{tabular}{|p{0.4\textwidth}|l|l|}
-        \hline
-        \textbf{Experiment} & $\pm 12^\circ$ LED Accuracy & $\pm 60^\circ$ LED Accuracy \\
-        \hline
-        \textbf{All Features, 16 Gestures} & 89.0\% & 86.7\% \\
-        \hline
-        \textbf{All Features, 20 Gestures} & 81.6\% & 78.2\% \\
-        \hline
-        \textbf{Smartwatch Features \newline(Dorsal Side Only), 20 Gestures} & 67.3\% & 61.1\% \\
-        \hline
-        \textbf{Transmission Features \newline(Band Width 3), 20 Gestures} & 58.0\% & 31.4\% \\
-        \hline
-        \textbf{Transmission Features \newline(Band Width 5), 20 Gestures} & 20.8\% & 10.4\% \\
-        \hline
+    \begin{tabular}{lrr}
+        \toprule
+        Experiment & $\pm 12^\circ$ LED Accuracy & $\pm 60^\circ$ LED Accuracy \\
+        \midrule
+        All Features, 16 Gestures & 89.0\% & 86.7\% \\
+        All Features, 20 Gestures & 81.6\% & 78.2\% \\
+        Smartwatch Features \newline(Dorsal Side Only), 20 Gestures & 67.3\% & 61.1\% \\
+        Transmission Features \newline(Band Width 3), 20 Gestures & 58.0\% & 31.4\% \\
+        Transmission Features \newline(Band Width 5), 20 Gestures & 20.8\% & 10.4\% \\
+        \bottomrule
     \end{tabular}
     \caption{Summary of the classification accuracies for both LED viewing angles. ("Transmission Features" refers to data recorded from photodiodes physically far from the active LED. "Band Width" refers to the number of sensors excluded from the readings. See \autoref{sec:reflection_transmission} for more detail.)}
     \label{tab:acc_summary_intro}
@@ -682,7 +656,7 @@ void capture() {
 \label{listing:capture_loop}
 \end{listing}
 
-\autoref{listing:capture_loop} shows code which runs on the Teensy. The code sequentially activates the LEDs. For each active LED, it records an average of five readings for each photodiode.
+\autoref{listing:capture_loop} shows code which runs on the Teensy, adapted from code provided by GestIR \cite{diamand2025}. The code sequentially activates the LEDs. For each active LED, it records an average of five readings for each photodiode. The Teensy's internal ADCs, with 12 bit resolutions, were used to read the analogue photodiode values.
 
 To control the LEDs, there is a global \mintinline{c}{uint16_t LEDSequence} variable which keeps track of the bits stored in the shift registers. To enable or disable an LED, the corresponding bit of the \mintinline{c}{LEDSequence} variable is set to 1 or 0 and the data is written to the shift register using the built-in Arduino function \mintinline{c}{shiftOut} (\autoref{listing:led_control}).
 
@@ -745,7 +719,7 @@ A major achievement of this project was the design and manufacture of a complex 
 \end{figure}
 
 \subsection{Op-amps}
-Initial designs of the wristband used one OPA381 op-amp for each segment. OPA381s are high precision, low noise op-amps that work well in transimpedance amplifiers with photodiodes. However, the OPA381s were significant contributors to the overall cost of the wristband. To reduce the cost, the final design uses the TLV9062. The TLV9062 is a cheaper, general purpose amplifier with higher input bias current and offset voltage. The TLV9062 is also a dual amplifier, with each chip containing two op-amps. In the final wristband design, two adjacent segments share a single TLV9062 chip, shown in \autoref{fig:segments_new}. This halves the number of components needed, significantly reducing the cost.
+Initial designs of the wristband used one OPA381 \cite{TexasInstruments2004OPA381Amplifier} op-amp for each segment. OPA381s are high precision, low noise op-amps that work well in transimpedance amplifiers with photodiodes. However, the OPA381s were significant contributors to the overall price of the wristband. To reduce the cost, the final design uses the TLV9062 \cite{TexasInstruments2024TLV906xSSystems}, a cheaper, general purpose amplifier with a higher offset voltage and input capacitance. The TLV9062 is also a dual amplifier, with each chip containing two op-amps. In the final wristband design, two adjacent segments share a single TLV9062 chip, shown in \autoref{fig:segments_new}. This halves the number of components needed, further reducing the cost.
 
 \subsection{LEDs}
 Initial wristbands were manufactured using one IR17-21C/TR8 LED per segment (\autoref{fig:segments_old}). This allowed us to manufacture multiple iterations of the device, testing other sections of the circuit, without unnecessary spending on higher quality LEDs. Once the circuit design was tested and finalised, final wristbands were manufactured using three brighter, more expensive LEDs per segment (\autoref{fig:segments_new}).
@@ -789,8 +763,8 @@ The selected LEDs had to satisfy the following constraints:
 
 The LEDs selected were:
 \begin{itemize}
-    \item The \textbf{VSMB1940X01}, with a $\pm 60^\circ$ viewing angle.
-    \item The \textbf{TSML1020}, with a $\pm 12^\circ$ viewing angle.
+    \item The \textbf{VSMB1940X01} \cite{VishaySemiconductors2023VSMB1940X01Nm}, with a $\pm 60^\circ$ viewing angle.
+    \item The \textbf{TSML1020} \cite{VishaySemiconductors2017TSML1020Nm}, with a $\pm 12^\circ$ viewing angle.
 \end{itemize}
 
 Both LEDs have the same current-voltage graphs and the same radiant power (40 mW at 100 mA). Since they are both powered from the same 3.3 V pin on the Teensy, this means they draw the same amount of current and produce the same amount of light energy. The TSML1020 has a much smaller viewing angle of $\pm 12^\circ$, so the radiant intensity is higher, as shown in \autoref{fig:viewing_angle}.
@@ -1001,7 +975,7 @@ Part way through data collection, the photodiodes on two segments of the $\pm 12
 \end{figure}
 
 \section{Findings}
-This section details the performance of the the models trained to classify the hand gestures.
+This section details the performance of the the models trained to classify the hand gestures. To investigate how informative data for gesture recognition is generated, we created a range of datasets consisting of specific features. \autoref{sec:all_features} analyses the overall model accuracies, comparing the performance of both wristbands, identifying the most commonly misclassified gestures, and investigating how much training data the models need to learn gestures. \autoref{sec:reflection_transmission} restricts the dataset to features designed to isolate data generated by deep tissue interactions from data generated by superficial reflections. \autoref{sec:smartwatch} explores the possibility of future integration into smartwatch devices by analysing accuracies of models trained on sensor data from the dorsal side of the wrist only.
 % \autoref{sec:all_features} analyses the overall model accuracies, comparing the accuracies of the wristbands and identifying the most commonly misclassified gestures. \autoref{sec:reflection_transmission} contains accuracies for models trained only on specific features of the data. \autoref{sec:smartwatch} contains accuracies for models trained on sensor data from the dorsal side of the wrist only, exploring the possibility of future integration into smartwatch devices. For all these experiments, paired $t$-tests were conducted to compare the accuracies of the $\pm 12^\circ$ and $\pm 60^\circ$ wristbands. \autoref{sec:confounding_variables} conducts statistical tests to check for order effects and environmental effects. \autoref{sec:wrist_circumference} shows correlation between the gesture recognition accuracy across all experiments and the participants' wrist circumferences.
 
 For all the statistical tests, a significance level of $\alpha=0.05$ was used. The tests are split into seven families:
@@ -1015,7 +989,8 @@ For all the statistical tests, a significance level of $\alpha=0.05$ was used. T
     \item Paired $t$-tests comparing the accuracies of models trained on the full gesture set vs the gesture set excluding pinch gestures
     
 \end{itemize}
-For each of these families, the $p$-values were corrected for multiple comparisons using the Benjamini-Hochberg procedure. $p_{adj}$ refers to the FDR adjusted $p$-values.
+Although the data for these tests all were produced from the same user trials, the seven families represent distinct hypotheses. For each of these families, the $p$-values were corrected for multiple comparisons using the Benjamini-Hochberg procedure. $p_{adj}$ refers to the FDR adjusted $p$-values. 
+
 \subsection{All Features}
 \label{sec:all_features}
 \label{sub}
@@ -1240,23 +1215,6 @@ Wrist circumference was measured 1.5 cm from the centre of the ulnar styloid (th
 \subsubsection{Order Effects}
 The order participants completed the data collection sessions was counterbalanced - group A used the $\pm 60^\circ$ wristband first, and group B used the $\pm 12^\circ$ first. To check for order effects, we calculated the difference in performance between the wristbands for each participant and performed Welch's unpaired $t$-tests on the performance differences of groups A and B. After FDR adjustment, the results were insignificant for all experiments, showing that there is no evidence that the order in which participants completed the sessions affected which wristband performed the best.
 
-% \begin{table}[htp]
-%     \centering
-%     \begin{tabular}{lrrrr}
-%         \toprule
-%         Experiment & $t$ & $p$ & $p_{adj}$ & Cohen's $d$ \\
-%         \midrule
-%         All Features, All Gestures & 2.136 & 0.063 & 0.291 & 1.300 \\
-%         All Features, Excluding Pinch Gestures & 0.953 & 0.369 & 0.369 & 0.546 \\
-%         Transmission Features (Band Width 3), All Gestures & 1.272 & 0.237 & 0.291 & 0.737 \\
-%         Transmission Features (Band Width 5), All Gestures & 1.358 & 0.218 & 0.291 & 0.765 \\
-%         Reflection Features (Band Width 3), All Gestures & 1.586 & 0.152 & 0.291 & 0.979 \\
-%         Smartwatch Features, All Gestures & 1.259 & 0.242 & 0.291 & 0.727 \\
-%         \bottomrule
-%     \end{tabular}
-%     \caption{Results of unpaired $t$-tests to investigative order effects}
-%     \label{tab:order_effects}
-% \end{table}
 
 \subsubsection{Data Collection Locations}
 Due to time constraints, data collection was conducted in three separate locations. Participants 1, 2, 3, 4, 5, 6 and 11 collected data in location A, participants 7 and 8 collected data in location B and participants 9 and 10 collected data in location C. In all locations, data collection was performed in a dark curtained room to minimise the impact of interference from background IR light.
@@ -1270,25 +1228,16 @@ After FDR adjustment, the results of the permutation tests were insignificant fo
 
 \begin{table}[htp]
     \centering
-    % Add vertical padding (default is 1.0)
-    \renewcommand{\arraystretch}{1.5} 
-    
-    % Add horizontal padding (default is usually 6pt)
-    \setlength{\tabcolsep}{10pt}
-    \begin{tabular}{|p{0.4\textwidth}|l|l|}
-        \hline
-        \textbf{Experiment} & $\pm 12^\circ$ LED Accuracy & $\pm 60^\circ$ LED Accuracy \\
-        \hline
-        \textbf{All Features} & 89.0\% & 86.7\% \\
-        \hline
-        \textbf{All Features, Excluding Pinch Gestures} & 81.6\% & 78.2\% \\
-        \hline
-        \textbf{Transmission Features \newline(Band Width 3), 20 Gestures} & 58.0\% & 31.4\% \\
-        \hline
-        \textbf{Transmission Features \newline(Band Width 5), 20 Gestures} & 20.8\% & 10.4\% \\
-        \hline
-        \textbf{Smartwatch Features} & 67.3\% & 61.1\% \\
-        \hline
+    \begin{tabular}{lrr}
+        \toprule
+        Experiment & $\pm 12^\circ$ LED Accuracy & $\pm 60^\circ$ LED Accuracy \\
+        \midrule
+        All Features, All Gestures & 81.6\% & 78.2\% \\
+        All Features, Excluding Pinch Gestures & 89.0\% & 86.7\% \\
+        Transmission Features (Band Width 3), All Gestures & 58.0\% & 31.4\% \\
+        Transmission Features (Band Width 5), All Gestures & 20.8\% & 10.4\% \\
+        Smartwatch Features, All Gestures & 67.3\% & 61.1\% \\
+        \bottomrule
     \end{tabular}
     \caption{Summary of the classification accuracies for both LED viewing angles}
     \label{tab:acc_summary}
@@ -1298,9 +1247,6 @@ After FDR adjustment, the results of the permutation tests were insignificant fo
     \centering
     \small
     \renewcommand{\arraystretch}{1.5} 
-    
-    % Add horizontal padding (default is usually 6pt)
-    % \setlength{\tabcolsep}{10pt}
     \begin{tabularx}{\textwidth}{
         |>{\raggedright\arraybackslash}X|
         >{\raggedright\arraybackslash}X|
@@ -1310,30 +1256,30 @@ After FDR adjustment, the results of the permutation tests were insignificant fo
         >{\raggedright\arraybackslash}X|
     }
         \hline
-         \textbf{Feature Set & Viewing Angle Comparison & Comparison with All Features & Order Effects & Environmental Effects & Correlation with Wrist Circumference \\}
+         \textbf{Condition} & \textbf{Viewing Angle Comparison} & \textbf{Comparison with All Features} & \textbf{Order Effects} & \textbf{Environmental Effects} & \textbf{Correlation with Wrist Circumference} \\
          \hline
-         All Features & Not significant & N/A & Not Significant & Not Significant & Not Significant \\
+         All Features & Not significant & N/A & Not significant & Not significant & Not significant \\
          \hline
-         All Features, Excluding Pinch Gestures & Not significant & Significant (higher for both wristbands) & Not Significant & Not Significant & Not Significant \\
+         All Features, Excluding Pinch Gestures & Not significant & \textbf{Significant (higher for both wristbands)} & Not significant & Not significant & Not significant \\
          \hline
-         Reflection Features (Band Width 3) & Not significant & Not Significant & Not Significant & Not Significant & Not Significant \\
+         Reflection Features (Band Width 3) & Not significant & Not significant & Not significant & Not significant & Not significant \\
          \hline
-         Transmission Features (Band Width 3) & Significant ($\pm 12^\circ$ higher) & Significant (lower for both wristbands) & Not Significant & Not Significant & Not Significant \\
+         Transmission Features (Band Width 3) & \textbf{Significant ($\bm{\pm 12^\circ}$ higher)} & \textbf{Significant (lower for both wristbands)} & Not significant & Not significant & Not significant \\
          \hline
-         Transmission Features (Band Width 5) & Significant ($\pm 12^\circ$ higher) & Significant (lower for both wristbands) & Not Significant & Not Significant & Not Significant \\
+         Transmission Features (Band Width 5) & \textbf{Significant ($\bm{\pm 12^\circ}$ higher)} & \textbf{Significant (lower for both wristbands)} & Not significant & Not significant & Not significant \\
          \hline
-         Smartwatch Features & Significant ($\pm 12^\circ$ higher) & Significant (Lower for both wristbands) & Not Significant & Not Significant & Not Significant \\
+         Smartwatch Features & \textbf{Significant ($\bm{\pm 12^\circ}$ higher)} & \textbf{Significant (Lower for both wristbands)} & Not significant & Not significant & Not significant \\
          \hline
-         70 Training Samples & Not significant & N/A & Not Significant & Not Significant & Not Significant \\
+         70 Training Samples & Not significant & N/A & N/A & N/A & N/A \\
          \hline
-         140 Training Samples & Not significant & N/A & Not Significant & Not Significant & Not Significant \\
+         140 Training Samples & Not significant & N/A & N/A & N/A & N/A \\
          \hline
-         210 Training Samples & Not significant & N/A & Not Significant & Not Significant & Not Significant \\
+         210 Training Samples & Not significant & N/A & N/A & N/A & N/A \\
          \hline
-         Without Broken Segments 2 \& 3 (First 6 Participants Only) & N/A & Significant (higher for $\pm 60^\circ$ wristband) & N/A & N/A & N/A \\
+         Fully functioning wristbands including segments 2 \& 3 (First 6 participants only) & N/A & \textbf{Significant (higher for $\bm{\pm 60^\circ}$ wristband)} & N/A & N/A & N/A \\
          \hline
     \end{tabularx}
-    \caption{Summary of the significance of the statistical tests conducted on model accuracies}
+    \caption{Summary of the significance of the statistical tests conducted on model accuracies - N/A means no test was performed.}
     \label{tab:results_summary}
 \end{table}
 
@@ -1343,54 +1289,26 @@ After FDR adjustment, the results of the permutation tests were insignificant fo
 
 % On the $\pm 12^\circ$ wristband, the Kruskal-Wallis H test and permutation test both produced $H$ statistics of 0 and $p$-values of 1, indicating the distribution of accuracies across locations is indistinguishable from random chance. On the $\pm 60^\circ$ wristband, the Kruskal-Wallis H test produced a $H$ statistic of 2.734 and $p$-value of 0.255, and the permutation test produced a $H$ statistic of 2.734 and a $p$-value of 0.323. This indicates there is no evidence of significant environmental effect on the wristband performance
 
-% \begin{table}[htp]
-%     \centering
-%     \begin{tabular}{lrrr}
-%         \toprule
-%         Experiment & $H$ & $p$ & $p_{adj}$ \\
-%         \midrule
-%         All Features, All Gestures & 0.000 & 1.000 & 1.000 \\
-%         All Features, Excluding Pinch Gestures & 2.006 & 0.432 & 0.741 \\
-%         Transmission Features (Band Width 3), All Gestures & 0.240 & 0.895 & 0.976 \\
-%         Transmission Features (Band Width 5), All Gestures & 3.461 & 0.202 & 0.646 \\
-%         Reflection Features (Band Width 3), All Gestures & 0.526 & 0.807 & 0.976 \\
-%         Smartwatch Features, All Gestures & 1.597 & 0.509 & 0.764 \\
-%         \bottomrule
-%     \end{tabular}
-%     \caption{Results of permutation tests to investigate environmental effects for the $\pm 12^\circ$ wristband}
-%     \label{tab:location_effects_12}
-% \end{table}
-
-% \begin{table}[htp]
-%     \centering
-%     \begin{tabular}{lrrr}
-%         \toprule
-%         Experiment & $H$ & $p$ & $p_{adj}$ \\
-%         \midrule
-%         All Features, All Gestures & 2.734 & 0.323 & 0.646 \\
-%         All Features, Excluding Pinch Gestures & 3.591 & 0.182 & 0.646 \\
-%         Transmission Features (Band Width 3), All Gestures & 3.273 & 0.218 & 0.646 \\
-%         Transmission Features (Band Width 5), All Gestures & 5.435 & 0.034 & 0.412 \\
-%         Reflection Features (Band Width 3), All Gestures & 2.740 & 0.311 & 0.646 \\
-%         Smartwatch Features, All Gestures & 0.344 & 0.869 & 0.976 \\
-%         \bottomrule
-%     \end{tabular}
-%     \caption{Results of Kruskal Wallis H tests and permutation tests to investigate environmental effects for the $\pm 60^\circ$ wristband}
-%     \label{tab:location_effects_60}
-% \end{table}
 
 
 \chapter{Discussion}
 \label{chap:discussion}
 
 \section{Tissue Penetration and Reflection}
-When IR light travels through biological tissue, three main phenomenon occur: reflection off of boundaries between materials, absorption into materials, and scattering. Generally, the larger the distance between the source and detector on the surface of the skin, the deeper the detected photons travelled on their path through the tissue. The intent of IR based gesture recognition systems is often to target dynamic tissue types, such as muscles and tendons, which move as the user performs gestures \cite{McIntosh2017SensIR:Reflection} \cite{diamand2025} \cite{Khalikov2026WearableControl}. This is due to the assumption that reflection and scattering off these tissues as they move generate the most informative features for gesture recognition. However, our results indicate that, for the low power SMD LEDs used in this project, the most informative data is generated by reflection and scattering on the surface of the skin, or very shallow in the wrist tissue.
+When IR light travels through biological tissue, three main phenomena occur: reflection off of boundaries between materials, absorption into materials, and scattering. Generally, the larger the distance between the source and detector on the surface of the skin, the deeper the detected photons travelled on their path through the tissue. The intent of IR based gesture recognition systems is often to target dynamic tissue types, such as muscles and tendons, which move as the user performs gestures \cite{McIntosh2017SensIR:Reflection} \cite{diamand2025} \cite{Khalikov2026WearableControl}. This is due to the assumption that reflection and scattering off these tissues as they move generate the most informative features for gesture recognition. However, our results indicate that, for the low power SMD LEDs used in this project, the most informative data is generated by reflection and scattering on the surface of the skin, or very shallow in the wrist tissue.
 
 Overall, the $\pm 12^\circ$ and $\pm 60^\circ$ angle LEDs achieved similar performance.
 
 When we forced the models to learn transmission features, the $\pm 12^\circ$ wristband performed significantly better than the $\pm 60^\circ$ wristband. This is likely because the higher radiant intensity results in a higher photon density - this increases the number of photons that survive a long scattering path through deep tissue and are detected by photodiodes.
 
 Despite this, the overall accuracy of both wristbands was lower when trained on only transmission features. This is likely because of the higher signal-to-noise ratio involved with detecting light that has travelled deep into tissue. Reflection features generated by photodiodes close to active LEDs (either detecting photons that immediately reflected off the surface of the skin, or reflected/scattered in shallow tissue) produced the most crucial data for gesture detection. Further research is needed to determine if increasing the brightness of LEDs allows for better feature generation from deep tissue, or if surface reflections are important regardless of LED power.
+
+Increasing the overall brightness and optical power of the LEDs would lead to high peak radiant intensities even in wider viewing angle LEDs, which would generate better transmission features and likely improve results further. However, the optical power of LEDs should be limited for safety and efficiency:
+
+\begin{itemize}
+    \item The optical power should be limited to protect the skin and tissue from thermal injury. The operating principle of the FlexIR wristband means there was an inherent low duty cycle of at most 6.25\%, since each of the 16 groups of LEDs were activated then deactivated sequentially. This, combined with the relatively low power of the LEDs used, means there was no risk of thermal injury from the IR light. Any future designs using higher power IR emitters would require careful comparison with appropriate guidelines, e.g, the ICNIRP Guidelines on Limits of Exposure to Incoherent Visible and Infrared Radiation \cite{Ziegelberger2013ICNIRPRadiation}.
+    \item Although different IR emitters achieve different levels of efficiency, in general a higher optical power requires a higher electrical power consumption. Constraining the amount of energy devices use is an important design consideration when integrating these systems into battery powered wearable technologies.
+\end{itemize}
 
 One promising application of this technology is future integration into smart-watch style devices. Gesture recognition using only sensors on the dorsal side would increase the practicality of this, since hardware could be fully incorporated into the watch head without the need for sensors around the wrist. However, the models we trained on data only the dorsal segments performed poorly, with the $\pm 12^\circ$ wristband only achieving 67\% accuracy. This suggests that for devices to accurately distinguish subtle gestures, LEDs and sensors are required around more of the wrist.
 
@@ -1414,7 +1332,7 @@ The performance of the wristbands varied between participants, likely due to ana
     \label{fig:led_types}
 \end{figure}
 
-Although the LEDs we compared were matched for radiant power and wavelength, the physical package size differs (see \autoref{fig:led_types}). This introduces a small potential confounding variable - different package sizes may slightly alter the way the LEDs couple with the skin, potentially influencing the interaction of IR light with the wrist tissue. Although the data strongly suggests that the higher radiant intensity of the $\pm 12^\circ$ LEDs produces better transmission features, we cannot entirely isolate this effect from the package size and sensor-skin coupling. However, based on FlexIR's findings that slight variations in skin coupling did not affect the accuracy, and the large magnitude of the performance difference in transmission features, this effect is considered negligible.
+Although the LEDs we compared were matched for radiant power and wavelength, the physical package size differs (see \autoref{fig:led_types}). This introduces a small potential confounding variable - different package sizes may slightly alter the way the LEDs couple with the skin, possibly influencing the interaction of IR light with the wrist tissue. Although the data strongly suggests that the higher radiant intensity of the $\pm 12^\circ$ LEDs produces better transmission features, we cannot entirely isolate this effect from the package size and sensor-skin coupling. However, based on FlexIR's findings that slight variations in skin coupling did not affect the accuracy, and the large magnitude of the performance difference in transmission features, this effect is considered negligible.
 
 \section{Gesture Set}
 The gesture set used to evaluate FlexIR contained a wide range hand gestures, spanning from large distinct hand and wrist positions to subtle finger movements. The most confusion came from the pinch gestures (pinch\_index, pinch\_middle, pinch\_ring and pinch\_pinkie) - for models trained on all features, pinches accounted for 43.1\% of the misclassifications on the  $\pm 12^\circ$ wristband and 41.9\% of the misclassifications on the  $\pm 60^\circ$ wristband. When trained on data excluding the pinch gestures, the model performances increased from 81.6\% to 89.0\% and 78.2\% to 86.7\% on the $\pm 12^\circ$ and $\pm 60^\circ$ wristbands respectively. This mirrors findings from GestIR and SensIR, confirming their conclusions that subtle finger movements are inherently difficult for IR sensing systems to detect.
@@ -1439,18 +1357,17 @@ Part way through data collection, the pair of wristbands being used broke due to
 Wearable devices in real world environments are highly susceptible to everyday wear and tear. The fact that FlexIR was still able to operate with two broken photodiodes, showing only a slight performance drop in one of the wristbands, demonstrates the resilience of infrared sensing systems.
 
 \section{Theoretical Performance}
-Due to the removal of two photodiode readings from the data, there was a small drop in accuracy for the $\pm 60^\circ$ wristband. On a fully functioning wristband, we would expect a performance boost of 1.69\%, resulting in an average accuracy of 79.9\%. Also, to satisfy the constraints of viewing angle and radiant power, LEDs with 940 nm wavelengths were chosen. The wavelength study conducted in GestIR \cite{diamand2025} identified 950 nm as a less effective wavelength due to the absorption peak in lipids between 930 nm and 1040 nm. 890 nm LEDs achieved a 3.4\% performance increase over 950 nm LEDs. Applying this to our results gives theoretical accuracies shown in \autoref{tab:theoretical_accs}.
+Due to the removal of two photodiode readings from the data, there was a small drop in accuracy for the $\pm 60^\circ$ wristband. On a fully functioning wristband, we would expect a performance boost of 1.69\%, resulting in an average accuracy of 79.9\%. Also, to satisfy the constraints of viewing angle and radiant power, LEDs with 940 nm wavelengths were chosen. The wavelength study conducted in GestIR \cite{diamand2025} identified 950 nm as a less effective wavelength due to the absorption peak in lipids between 930 nm and 1040 nm. 890 nm LEDs achieved a 3.4\% performance increase over 950 nm LEDs. Applying these increases to our results gives theoretical accuracies shown in \autoref{tab:theoretical_accs}.
 
 \begin{table}[htp]
     \centering
-    \begin{tabular}{|l|l|l|}
-        \hline
-        \textbf{Experiment} & $\pm 12^\circ$ LED Accuracy & $\pm 60^\circ$ LED Accuracy \\
-        \hline
-        \textbf{All Features, All Gestures} & 85.0\% & 83.3\% \\
-        \hline
-        \textbf{All Features, Excluding Pinch Gestures} & 92.4\% & 91.8\% \\
-        \hline
+    \begin{tabular}{lrr}
+        \toprule
+        Experiment & $\pm 12^\circ$ LED Accuracy & $\pm 60^\circ$ LED Accuracy \\
+        \midrule
+        All Features, All Gestures & 85.0\% & 83.3\% \\
+        All Features, Excluding Pinch Gestures & 92.4\% & 91.8\% \\
+        \bottomrule
     \end{tabular}
     \caption{Theoretical accuracy of fully functioning wristbands with 890 nm LEDs}
     \label{tab:theoretical_accs}
@@ -1489,6 +1406,13 @@ A secondary achievement of this project was a user study comparing the effective
 
 Although this project improves on the practicality and ergonomics of previous wristband designs, more design optimisation is needed to transition the device from a research tool into a real product.
 
+\subsection{General PCB Optimisation}
+Although the FlexIR wristband was heavily iterated to optimise practicality and functionality, there are still some improvements to be made:
+\begin{itemize}
+    \item Increasing the trace width would help protect them from damage due to repeated flexing
+    \item Using smaller Darlington arrays and shift registers, as well as further optimising the layout of components, would reduce the form factor
+\end{itemize}
+
 \subsection{Wristband Ergonomics}
 In the current design, the LEDs and photodiodes make direct contact with the wrist. Over long sessions, this becomes uncomfortable and can leave indentations in the skin. Encasing the wristband in a soft material, e.g. silicon, could improve the ergonomics. However, research is necessary into the effect of introducing additional materials between the sensing circuits and the skin.
 
@@ -1511,7 +1435,7 @@ Minor modifications to the wristband hardware would allow comparison of a wider 
 \begin{itemize}
     \item Finer exploration of LED wavelength and viewing angle
     \item Photodiode viewing angle
-    \item Transimpedance amplifier parameters 
+    \item Transimpedance amplifier configuration 
 \end{itemize}
 
 These extensions would gain more practical insights into optimal hardware for infrared sensing and would further transition the project from a research tool to a practical wearable device.
@@ -1577,11 +1501,174 @@ These extensions would gain more practical insights into optimal hardware for in
 \chapter{Appendix A: AI Prompts/Tools}
 \label{appx:ai_prompt}
 
-\textbf{This is a COMPULSORY Appendix}
+AI has been used sparingly in this project to enable rapid iteration. Where small portions of AI generated code are used, they have been thoroughly checked and edited.
 
-List of prompts/tools/references that were used in the project and/or dissertation with an Artificial Intelligence model. This can include Large Language Models (LLMs) such as ChatGPT, image/video generation tools, or AI summarisation Tools.
+\begin{itemize}
+    \item IntelliJ's code completion, which is powered by an AI assistant, was used to assist in the of the Python software.
+    \item Overleaf's Writefull, which uses custom language models trained on research papers and fine-tuned to LaTeX, was used for spelling and grammar suggestions.
+    \item GPT-5.2 and Gemini 3.1 Pro were used to assist in writing code to generate graphs and visualisations using matplotlib.
+\end{itemize}
 
-\textbf{Failure to include this list can result in a Contract Cheating allegation.}
+\chapter{Statistical Test Results}
+\label{appx:stats_results}
+
+\begin{table}[htp]
+    \centering
+    \begin{tabular}{lrrrr}
+        \toprule
+        Condition & $t$ & $p$ & $p_{adj}$ & Cohen's $d$ \\
+        \midrule
+        All Features, All Gestures & 1.758 & 0.109 & 0.124 & -0.530 \\
+        All Features, Excluding Pinch Gestures & 1.679 & 0.124 & 0.124 & -0.506 \\
+        Transmission Features (Band Width 3), All Gestures & 5.362 & 0.000 & 0.002 & -1.617 \\
+        Transmission Features (Band Width 5), All Gestures & 3.709 & 0.004 & 0.012 & -1.118 \\
+        Reflection Features (Band Width 3), All Gestures & 1.803 & 0.102 & 0.124 & -0.544 \\
+        Smartwatch Features, All Gestures & 2.773 & 0.020 & 0.039 & -0.836 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Results of paired $t$-tests comparing the accuracies of the $\pm 12^\circ$ and $\pm 60^\circ$ wristbands when trained using different sets of features}
+    \label{tab:overall_results}
+\end{table}
+
+\begin{table}[htp]
+    \centering
+    \begin{tabular}{lrrrr}
+        \toprule
+        Condition & $t$ & $p$ & $p_{adj}$ & Cohen's $d$ \\
+        \midrule
+        70 captures (25\% of full training set) & -1.112 & 0.292 & 0.292 & 0.335 \\
+        140 captures (50\% of full training set) & -1.620 & 0.136 & 0.182 & 0.488 \\
+        210 captures (75\% of full training set) & -1.887 & 0.088 & 0.182 & 0.569 \\
+        280 captures (100\% of full training set) & -1.758 & 0.109 & 0.182 & 0.530 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Results of paired $t$-tests comparing the accuracies of the $\pm 12^\circ$ and $\pm 60^\circ$ wristbands when trained on varying training set sizes}
+    \label{tab:training_set_results}
+\end{table}
+
+\begin{table}[htp]
+    \centering
+    \begin{tabular}{lrrrr}
+        \toprule
+        Condition & $t$ & $p$ & $p_{adj}$ & Cohen's $d$ \\
+        \midrule
+        Reflection Features (Band Width 3), All Gestures & -0.461 & 0.655 & 0.727 & 0.139 \\
+        Transmission Features (Band Width 3), All Gestures & 8.609 & 0.000 & 0.000 & -2.596 \\
+        Transmission Features (Band Width 5), All Gestures & 21.449 & 0.000 & 0.000 & -6.467 \\
+        Smartwatch Features, All Gestures & 10.937 & 0.000 & 0.000 & -3.298 \\
+        All Features, Excluding Broken Gestures, All Gestures & -2.062 & 0.094 & 0.118 & 0.842 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Results of paired $t$-tests comparing the performance of models trained on different features to the performance of models trained on all features for the $\pm 12^\circ$ wristband}
+    \label{tab:training_set_results_12}
+\end{table}
+
+\begin{table}[htp]
+    \centering
+    \begin{tabular}{lrrrr}
+        \toprule
+        Condition & $t$ & $p$ & $p_{adj}$ & Cohen's $d$ \\
+        \midrule
+        Reflection Features (Band Width 3), All Gestures & -0.244 & 0.812 & 0.812 & 0.074 \\
+        Transmission Features (Band Width 3), All Gestures & 15.284 & 0.000 & 0.000 & -4.608 \\
+        Transmission Features (Band Width 5), All Gestures & 25.373 & 0.000 & 0.000 & -7.650 \\
+        Smartwatch Features, All Gestures & 10.474 & 0.000 & 0.000 & -3.158 \\
+        All Features, Excluding Broken Gestures, All Gestures & -2.966 & 0.031 & 0.045 & 1.211 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Results of paired $t$-tests comparing the performance of models trained on different features to the performance of models trained on all features for the $\pm 60^\circ$ wristband}
+    \label{tab:training_set_results_60}
+\end{table}
+
+\begin{table}[htp]
+    \centering
+    \begin{tabular}{lrrrr}
+        \toprule
+        Experiment & $t$ & $p$ & $p_{adj}$ & Cohen's $d$ \\
+        \midrule
+        All Features, All Gestures & 2.136 & 0.063 & 0.291 & 1.300 \\
+        All Features, Excluding Pinch Gestures & 0.953 & 0.369 & 0.369 & 0.546 \\
+        Transmission Features (Band Width 3), All Gestures & 1.272 & 0.237 & 0.291 & 0.737 \\
+        Transmission Features (Band Width 5), All Gestures & 1.358 & 0.218 & 0.291 & 0.765 \\
+        Reflection Features (Band Width 3), All Gestures & 1.586 & 0.152 & 0.291 & 0.979 \\
+        Smartwatch Features, All Gestures & 1.259 & 0.242 & 0.291 & 0.727 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Results of unpaired $t$-tests to investigative order effects}
+    \label{tab:order_effects}
+\end{table}
+
+\begin{table}[htp]
+    \centering
+    \begin{tabular}{lrrr}
+        \toprule
+        Experiment & $H$ & $p$ & $p_{adj}$ \\
+        \midrule
+        All Features, All Gestures & 0.000 & 1.000 & 1.000 \\
+        All Features, Excluding Pinch Gestures & 2.006 & 0.432 & 0.741 \\
+        Transmission Features (Band Width 3), All Gestures & 0.240 & 0.895 & 0.976 \\
+        Transmission Features (Band Width 5), All Gestures & 3.461 & 0.202 & 0.646 \\
+        Reflection Features (Band Width 3), All Gestures & 0.526 & 0.807 & 0.976 \\
+        Smartwatch Features, All Gestures & 1.597 & 0.509 & 0.764 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Results of permutation tests to investigate environmental effects for the $\pm 12^\circ$ wristband}
+    \label{tab:location_effects_12}
+\end{table}
+
+\begin{table}[htp]
+    \centering
+    \begin{tabular}{lrrr}
+        \toprule
+        Experiment & $H$ & $p$ & $p_{adj}$ \\
+        \midrule
+        All Features, All Gestures & 2.734 & 0.323 & 0.646 \\
+        All Features, Excluding Pinch Gestures & 3.591 & 0.182 & 0.646 \\
+        Transmission Features (Band Width 3), All Gestures & 3.273 & 0.218 & 0.646 \\
+        Transmission Features (Band Width 5), All Gestures & 5.435 & 0.034 & 0.412 \\
+        Reflection Features (Band Width 3), All Gestures & 2.740 & 0.311 & 0.646 \\
+        Smartwatch Features, All Gestures & 0.344 & 0.869 & 0.976 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Results of permutation tests to investigate environmental effects for the $\pm 60^\circ$ wristband}
+    \label{tab:location_effects_60}
+\end{table}
+
+\begin{table}[htp]
+    \centering
+    \begin{tabular}{lrrr}
+        \toprule
+        Condition & $r$ & $p$ & $p_{adj}$ \\
+        \midrule
+        All Features, All Gestures & -0.112 & 0.743 & 0.999 \\
+        All Features, Excluding Pinch Gestures & -0.007 & 0.983 & 0.999 \\
+        Transmission Features (Band Width 3), All Gestures & -0.160 & 0.638 & 0.999 \\
+        Transmission Features (Band Width 5), All Gestures & 0.000 & 0.999 & 0.999 \\
+        Reflection Features (Band Width 3), All Gestures & -0.193 & 0.569 & 0.999 \\
+        Smartwatch Features, All Gestures & -0.011 & 0.975 & 0.999 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Results of Pearson correlation tests between model performance and participant wrist circumference for the $\pm 12^\circ$ wristband}
+    \label{tab:correlation_12}
+\end{table}
+
+\begin{table}[htp]
+    \centering
+    \begin{tabular}{lrrr}
+        \toprule
+        Condition & $r$ & $p$ & $p_{adj}$ \\
+        \midrule
+        All Features, All Gestures & 0.056 & 0.869 & 0.999 \\
+        All Features, Excluding Pinch Gestures & 0.141 & 0.679 & 0.999 \\
+        Transmission Features (Band Width 3), All Gestures & -0.259 & 0.442 & 0.999 \\
+        Transmission Features (Band Width 5), All Gestures & -0.069 & 0.840 & 0.999 \\
+        Reflection Features (Band Width 3), All Gestures & 0.089 & 0.794 & 0.999 \\
+        Smartwatch Features, All Gestures & -0.114 & 0.738 & 0.999 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Results of Pearson correlation tests between model performance and participant wrist circumference for the $\pm 60^\circ$ wristband}
+    \label{tab:correlation_60}
+\end{table}
 
 \chapter{Confusion Matrices}
 \label{appx:cms}
