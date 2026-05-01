@@ -40,6 +40,7 @@
 \usepackage{array}
 \usepackage{subcaption}
 \usepackage{hyperref}
+\usepackage[capitalize, nameinlink]{cleveref}
 \usepackage{booktabs}
 \usepackage{bm}
 \newcommand{\listingautorefname}{Listing}
@@ -193,7 +194,7 @@ This project fits within the scope of ethics application 6683, as reviewed by my
     \item The data processing and statistical software was developed in Python, using the following libraries:
     \begin{itemize}
         \item \textbf{Matplotlib} for plotting graphs
-        \item \textbf{numpy}, \textbf{pandas}, \textbf{scipy} and \textbf{statsmodels} for satistics and data processing
+        \item \textbf{numpy}, \textbf{pandas}, \textbf{scipy} and \textbf{statsmodels} for statistics and data processing
     \end{itemize}
     \item The following hardware was used:
     \begin{itemize}
@@ -242,6 +243,7 @@ $\theta$ &: & Viewing angle / angle of half intensity of an LED \\
 \(V_{out}\) &: & Output voltage of a transimpedance amplifier \\
 \(I_{in}\) &: & Input current of a transimpedance amplifier \\
 \(R_{f}\) &: & Value of a feedback resistor in a transimpedance amplifier \\
+\ohm &: & Ohm - resistance of a resistor \\
 $p$ &: & p-value - probability of obtaining the results if the null hypothesis is true \\
 $t$ &: & test statistic for a $t$-test \\
 $d$ &: & Cohen's $d$ - effect size \\
@@ -271,7 +273,7 @@ $\alpha$ &: & Significance level \\
 \label{chap:context}
 Gesture recognition systems offer the potential to harness hand gestures for control over computer systems, allowing users to interact with technology through intuitive, natural body movements rather than traditional input devices. There are many methods of hand gesture recognition, including camera hand tracking, acoustic sensing and electromyography (EMG), but most devices lack the accuracy, ergonomics and practicality needed for everyday use.
 
-Infrared (IR) based sensing stands out as an accurate, practical method of gesture recognition. Infrared sensing is less susceptible to sensor placement and skin coupling issues than other methods of gesture recognition, for example, EMG . IR sensing systems are also relatively cheap and low power compared to other methods of gesture detection, and the possibility of future integration into smartwatch style devices offers a practical, unobtrusive method of integrating gesture recognition into everyday human-computer interaction \cite{McIntosh2017SensIR:Reflection}.
+Infrared (IR) based sensing stands out as an accurate, practical method of gesture recognition. Infrared sensing is less susceptible to sensor placement and skin coupling issues than other methods of gesture recognition, for example, EMG. IR sensing systems are also relatively cheap and low power compared to other methods of gesture detection, and the possibility of future integration into smartwatch style devices offers a practical, unobtrusive method of integrating gesture recognition into everyday human-computer interaction \cite{McIntosh2017SensIR:Reflection}.
 
 Previous work has shown that IR sensing systems can be used in wrist worn devices to accurately detect hand gestures \cite{McIntosh2017SensIR:Reflection} \cite{Khalikov2026WearableControl}. Research has also been conducted into the effectiveness of different IR wavelengths \cite{diamand2025}. 
 
@@ -297,10 +299,10 @@ Wrist worn gesture recognition devices offer the ability to use hand gestures in
     \item Designed, manufactured, and evaluated a new flexible PCB wristband that performs gesture recognition using infrared sensing.
     \item Collected a dataset from 11 participants to evaluate wristband performance
     \item Investigated the effect of the LED viewing angle on gesture classification accuracy
-    \item Investigated the potential for future smart-watch integration through sensing from only the dorsal side of the wrist
+    \item Investigated the potential for future smartwatch integration through sensing from only the dorsal side of the wrist
 \end{itemize}
 
-\autoref{tab:acc_summary_intro} contains a summary of the performance differences of the two LED viewing angles across the different experiments. See \autoref{chapter:experiment} for more detailed results.
+\Cref{tab:acc_summary_intro} contains a summary of the performance differences of the two LED viewing angles across the different experiments. See \cref{chapter:experiment} for more detailed results.
 
 \begin{table}[htp]
     \centering
@@ -315,7 +317,7 @@ Wrist worn gesture recognition devices offer the ability to use hand gestures in
         Transmission Features \newline(Band Width 5), 20 Gestures & 20.8\% & 10.4\% \\
         \bottomrule
     \end{tabular}
-    \caption{Summary of the classification accuracies for both LED viewing angles. ("Transmission Features" refers to data recorded from photodiodes physically far from the active LED. "Band Width" refers to the number of sensors excluded from the readings. See \autoref{sec:reflection_transmission} for more detail.)}
+    \caption{Summary of the classification accuracies for both LED viewing angles. ("Transmission Features" refers to data recorded from photodiodes physically far from the active LED. "Band Width" refers to the number of sensors excluded from the readings. See \cref{sec:reflection_transmission} for more detail.)}
     \label{tab:acc_summary_intro}
 \end{table}
 
@@ -331,7 +333,7 @@ A reliable method of gesture recognition is recording video footage of the user 
 % Apple's Vision Pro used an array of sensors, including visible light cameras and IR cameras, mounted on a virtual reality headset to detect hand gestures, allowing control over an augmented reality environment \cite{}. This system is more resistant to low lighting, but is still susceptible to physical occlusion.
 
 \subsection{Electromyography (EMG)}
-Electromyography is a technique which measures the electrical activity of muscles. Aghchehli et al. used EMG to classify 6 gestures with 97.8\% accuracy \cite{Aghchehli2025MediumRecognition}, shown in \autoref{fig:emg}. Electromyography systems have been shown to be accurate with high number of electrodes. Lower density EMG devices with fewer electrodes can achieve high accuracy, but require precise placement of electrodes on the skin, reducing the practicality. Physiological differences, e.g., skin conductivity, between individuals also limit how well electromyography systems can generalise to populations.
+Electromyography is a technique which measures the electrical activity of muscles. Aghchehli et al. used EMG to classify 6 gestures with 97.8\% accuracy \cite{Aghchehli2025MediumRecognition}, shown in \cref{fig:emg}. Electromyography systems have been shown to be accurate a with high number of electrodes. Lower density EMG devices with fewer electrodes can achieve high accuracy, but require precise placement of electrodes on the skin, reducing the practicality. Physiological differences, e.g., skin conductivity, between individuals also limit how well electromyography systems can generalise to populations.
 
 \begin{figure}[h]
     \centering
@@ -344,7 +346,7 @@ Electromyography is a technique which measures the electrical activity of muscle
 Magnetomyography measures the magnetic fields generated by muscle contractions. It has multiple advantages over EMG - it is less affected by changes in skin conductivity and doesn't rely on sensor coupling with the skin. Yun et al. showed magnetomyography can classify 9 gestures with 95\% accuracy, and can generalise well across participants \cite{IncRichyYun2024GeneralizableMagnetomyography}. However, magnetomyography requires extremely expensive sensing equipment, as well as a magnetically shielded room, making it unsuitable for low cost, portable gesture recognition.
 
 \subsection{Mechanomyography (MMG)}
-Mechanomyography is a technique that measures the mechanical oscillations caused by muscle contractions, typically using accelerometers or microphones. Compared to EMG, MMG is less affected by electrical interference and skin conductivity. MMG has been used to classify 6 hand gestures with 85\% accuracy, and 10 hand gestures with 82\% accuracy, shown in \autoref{fig:mmg}. However, MMG systems are extremely sensitive to environmental noise and body movement, limiting their ability to detect subtle gestures and making them impractical for practical everyday use. \cite{Elyasi2025GestureMechanomyography}
+Mechanomyography is a technique that measures the mechanical oscillations caused by muscle contractions, typically using accelerometers or microphones. Compared to EMG, MMG is less affected by electrical interference and skin conductivity. MMG has been used to classify 6 hand gestures with 85\% accuracy, and 10 hand gestures with 82\% accuracy, shown in \cref{fig:mmg}. However, MMG systems are extremely sensitive to environmental noise and body movement, limiting their ability to detect subtle gestures and making them impractical for practical everyday use \cite{Elyasi2025GestureMechanomyography}.
 
 \begin{figure}[h]
     \centering
@@ -356,11 +358,10 @@ Mechanomyography is a technique that measures the mechanical oscillations caused
 \subsection{Ultrasound}
 Ultrasound imaging can capture muscle and tendon movements in the wrist. EchoFlex \cite{McIntosh2017EchoFlex:Imaging} used ultrasound to classify 10 hand gestures with over 98\% accuracy. However, ultrasound machines are large and have high power consumption. Smaller portable ultrasound scanners are available, but they are expensive. Also, ultrasound devices rely on gel to increase coupling between the transducer and the skin, making them impractical for everyday wearable technology.
 \subsection{Optical Tomography and Optomyography (OMG)}
-NIR diffuse optical tomography is a 3D imaging technique that uses infrared emitters and receivers to construct 3D distributions of the optical properties of different tissue types. This demonstrates that NIR light can be used to extract useful structural information from tissue.
+NIR diffuse optical tomography is a medical imaging technique that uses infrared emitters and receivers to analyse the optical properties of different tissue types.  This demonstrates that NIR light can be used to extract useful structural information from tissue \cite{Hoshi2016OverviewApplications}.
 
 Optomyography (OMG) is a similar technique that uses infrared emitters and receivers to monitor muscle activity. OMG offers a better signal-to-noise ratio than EMG and MMG, and is less susceptible to factors such as sensor placement and sensor-skin coupling. Previous research has demonstrated that an OMG armband can measure distinct signals for different hand positions, providing further support for using IR light for wrist based gesture recognition. \cite{Muhammed2017AOMG}
-\subsection{Infrared Sensing}
-Infrared sensing systems measure the interaction of infrared light with biological tissue. Optomyography is a technique that uses infrared light to monitor muscle activity. Previous work has shown that infrared sensing and optomyography can be used in wrist worn devices to perform gesture recognition.
+
 \subsubsection{SensIR}
 SensIR \cite{McIntosh2017SensIR:Reflection} demonstrated that the interaction of IR light with the wrist can be used to accurately classify hand gestures. It consists of 14 segments, each containing an 860 nm LED and a photodiode, which were used to measure the transmission, reflection, and absorption of IR light as it passed through the wrist. Measurements were taken between all combinations of IR emitters and receivers, and the resulting data was fed into a small neural network which classified the gestures. SensIR classified 12 gestures with an average accuracy of 93\%.
 \subsubsection{GestIR}
@@ -373,30 +374,24 @@ FlexIR addresses these issues by using a flexible PCB wristband. This improves o
 \subsubsection{Realtime gesture decoding}
 Recent concurrent work by Khalikov et al. used a flexible PCB wristband design to decode hand gestures in real time \cite{Khalikov2026WearableControl}. In the study, users wore a wristband that measured the interaction of IR light with the wrist, similar to SensIR and GestIR. Users completed a calibration process, where they performed a variety of hand gestures. A small machine learning model was then trained on the data. After calibration, users used the device to play a cursor-pointing game where they used hand gestures to acquire targets with a screen cursor. While the study also used a flexible PCB wristband, the hardware design and study goals differ from this project:
 \begin{itemize}
-    \item A layer of transparent silicon was used to cover the LEDs and photodiodes. While potentially beneficial for ergonomics, the effect of introducing extra materials on the path of the light is unclear. This removes the possibility for accurate comparison of the optical properties of components, e.g. LED viewing angle. In this project, the sensing hardware makes direct contact with the skin.
+    \item A layer of transparent silicon was used to cover the LEDs and photodiodes. While potentially beneficial for ergonomics, the effect of introducing extra materials on the path of the light is unclear. This removes the possibility for accurate comparison of the optical properties of components, e.g., LED viewing angle. In this project, the sensing hardware makes direct contact with the skin.
     \item FlexIR achieves a much higher component density, containing 16 segments capable of emitting and receiving IR light, allowing for more data collection.
 \end{itemize}
 
 Nonetheless, the study demonstrated the viability of flexible PCBs for infrared based gesture recognition, further justifying the design choices for this project. Also, it shows that infrared sensing wristbands have the potential to allow real world, real time gesture based interaction and control over computers.
-% Khalikov et al. used optomyography to decode hand gestures in real time \cite{Khalikov2026WearableControl}. In the study, users wore a wristband that measured the interaction of IR light with the wrist, similar to SensIR. Users completed a callibration process, where they performed a variety of hand gestures. A small machine learning model was then trained on the data. After callibration, users used the device to play a cursor-pointing game where they used hand gestures to acquire targets with a screen cursor. This shows that infrared sensing wristbands have the potential to allow real world, real time gesture based interaction and control over computers.
 
-
-
-% The Khalikov et al. study used a flexible printed circuit board (FPCB) design. This makes the wristband more compact, improving the ergonomics and practicality.
-
-% In this project, we also designed and manufactured a flexible PCB wristband. However, the FlexIR wristband has a higher component density than the wristband used in the Khalikov study, containing more infrared emitters and sensors, allowing for more data collection. The form factor of the FlexIR wristband is also smaller, further improving ergonomics and practicality. In this project, the sensing hardware (LEDs and photodiodes) makes physical contact with the skin, whereas the Khalikov study used silicon covers over the electronics. This enables FlexIR to more effectively isolate the optical properties of components, e.g. LED viewing angle, for investigation.
 
 \section{Hardware}
 \label{section:hardware}
 This section is an overview of the electronic components required to manufacture an infrared sensing system.
 
 \subsection{PCBs}
-A Printed Circuit Board (PCB) is a thin board made of alternating layers of conductive material (e.g. copper) and insulating substrate (e.g. FR-4). The conductive copper layers are laid out in tracks and are used to connect electronic components together \cite{Grout2008DigitalCPLDs}.
+A Printed Circuit Board (PCB) is a thin board made of alternating layers of conductive material (e.g., copper) and insulating substrate (e.g., FR-4). The conductive copper layers are laid out in tracks and are used to connect electronic components together \cite{Grout2008DigitalCPLDs}.
 
-A Flexible Printed Circuit Board (FPCB) is a PCB that uses a flexible material (e.g. polyimide) as a substrate. FPCBs are useful for wearable devices since the electronics can bend and conform easily to the body. Stiffeners are rigid materials attached to portions of an FPCB to provide reinforcement to specific parts of the circuit. Stiffeners are commonly used underneath components to prevent bending, avoiding broken solder joints \cite{2009FlexibleElectronics}.
+A Flexible Printed Circuit Board (FPCB) is a PCB that uses a flexible material (e.g., polyimide) as a substrate. FPCBs are useful for wearable devices since the electronics can bend and conform easily to the body. Stiffeners are rigid materials attached to portions of an FPCB to provide reinforcement to specific parts of the circuit. Stiffeners are commonly used underneath components to prevent bending, avoiding broken solder joints \cite{2009FlexibleElectronics}.
 
 \subsection{Through Hole Technology (THT) and Surface Mount Technology (SMT)}
-Electrical components can be attached to PCBs using either Through Hole Technology (THT) or Surface Mount Technology. THT is when component leads are inserted through holes drilled in PCBs and soldered to pads on the opposite side (\autoref{fig:tht}). SMT is a method where components are mounted directly to the surface of a PCB (\autoref{fig:smt}). Components mounted using SMT are called Surface Mount Devices (SMDs) \cite{Horowitz2015TheEdition}.
+Electrical components can be attached to PCBs using either Through Hole Technology (THT) or Surface Mount Technology. THT is when component leads are inserted through holes drilled in PCBs and soldered to pads on the opposite side (\cref{fig:tht}). SMT is a method where components are mounted directly to the surface of a PCB (\cref{fig:smt}). Components mounted using SMT are called Surface Mount Devices (SMDs) \cite{Horowitz2015TheEdition}.
 
 
 \begin{figure}[h]
@@ -439,7 +434,7 @@ Transimpedance amplifiers are current to voltage converters that can be used to 
 where \(I_{in}\) is the input current and \(R_f\) is the value of the feedback resistor \cite{TexasInstrumentsWhat1}.
 
 \section{Microcontrollers}
-Microcontrollers are small computers on a single integrated circuit. Code can be run on microcontrollers to control other electrical components through output pins, and to read signals through input pins. Most microcontrollers have analogue-to-digital converters (ADCs), which convert analogue signals at the input pins to binary numbers that the processor can manipulate. The conversion rate of an ADC is how fast it can convert an analogue value to a digital value. The resolution of an ADC is the smallest change in an analogue signal that would result in a change in the digital output.
+Microcontrollers are small computers on a single integrated circuit. Code can be run on microcontrollers to control other electrical components through output pins, and to read signals through input pins. Most microcontrollers have analogue-to-digital converters (ADCs), which convert analogue signals at the input pins to binary numbers that the processor can manipulate. The conversion rate of an ADC is how fast it can convert an analogue value to a digital value. The resolution of an ADC is the smallest change in an analogue signal that would result in a change in the digital output \cite{Broesch2008DigitalAccess}.
 
 \section{Machine Learning}
 Machine learning models are programs trained on datasets to identify patterns and make predictions. In this project, we used machine learning models to classify hand gestures based on infrared sensor data. This section is an overview of the models used.
@@ -462,10 +457,10 @@ An MLP is the most common type of neural network. It consists of:
 \begin{itemize}
     \item An input layer, where each neuron corresponds to a feature of the input data
     \item One or more hidden layers, which contain interconnected neurons that learn relationships between features
-    \item An output layer, which produces the models predictions. In a classification task, there is one neuron per class label.
+    \item An output layer, which produces the models' predictions. In a classification task, there is one neuron per class label.
 \end{itemize}
 \subsubsection{Convolutional Neural Networks (CNN)s}
-A CNN is a type of neural network that is more effective at processing grid-like data, e.g. image data. In a CNN, a filter (or kernel) slides across the input data, performing an operation with the part of the data it's over at each step. The resulting number is stored as a feature.
+A CNN is a type of neural network that is more effective at processing grid-like data, e.g., image data. In a CNN, a filter (or kernel) slides across the input data, performing an operation with the part of the data it's over at each step. The resulting number is stored as a feature.
 
 CNNs have convolutional layers, which use filters to extract useful structural features from the input data, for example to perform edge detection in images.
 
@@ -501,13 +496,15 @@ Three main phenomena occur when IR light interacts with biological tissue: \text
     \item \textbf{Scattering} - light bounces as it travels through tissue, changing direction.
 \end{itemize}
 
-The \textbf{first optical window}, also known as the NIR 1 window, is a range of wavelengths commonly used in medical imaging (650 - 950 nm). The absorption coefficients of tissue materials are low for these wavelengths, making them effective at penetrating flesh.
+The \textbf{first optical window}, also known as the NIR 1 window, is a range of wavelengths commonly used in medical imaging (650 - 950 nm). The absorption coefficients of tissue materials are low for these wavelengths, making them effective at penetrating flesh \cite{Smith2009SecondImaging}.
+
+When measuring the interaction of light with tissue, the larger the distance between the source and detector on the surface of the skin, the deeper the detected photons travelled - Yang et al. \cite{Yang2007QuantitativeSpectroscopy} demonstrated that, on the forearm a 2.5 mm source-detector distance captures light from only the skin and fat layers, whereas a larger source-detector distance of 30 mm captures light from deeper muscle layers.
 
 % -----------------------------------------------------------------------------
 
 \chapter{Designing and Manufacturing the Wristband}
 \label{chap:execution}
-The FlexIR wristband, shown in \autoref{fig:FlexIR_wrist}, performs gesture recognition by measuring the transmission and reflection of near IR light through the wrist.
+The FlexIR wristband, shown in \cref{fig:FlexIR_wrist}, performs gesture recognition by measuring the transmission and reflection of near IR light through the wrist.
 
 \begin{figure}[htp]
     \centering
@@ -538,7 +535,7 @@ FlexIR improves on the designs of SensIR \cite{McIntosh2017SensIR:Reflection} an
 Compared to the FPCB wristband used in the Khalikov et al. study, the FlexIR wristband also has design differences that better qualify it for this study:
 \begin{itemize}
     \item FlexIR has a higher density of components, containing 16 segments of LEDs and photodiodes. FlexIR produces 256 measurements for each reading.
-    \item The sensing hardware in FlexIR makes direct contact with the skin, allowing for direct comparison of optical properties of components, e.g. LED viewing angle.
+    \item The sensing hardware in FlexIR makes direct contact with the skin, allowing for direct comparison of optical properties of components, e.g., LED viewing angle.
 \end{itemize}
 
 \section{Operating Principle}
@@ -560,7 +557,7 @@ Compared to the FPCB wristband used in the Khalikov et al. study, the FlexIR wri
     \caption{FlexIR operating principle}
     \label{fig:operation}
 \end{figure}
-The FlexIR wristband is made up of 16 segments, each containing 3 LEDs and a photodiode. The wristband is connected to a Teensy 4.1 microcontroller via a flat flexible cable (FFC). The microcontroller sequentially activates each group of 3 LEDs and records the values measured by all the photodiodes (\autoref{fig:SensIR}). This produces a 16x16 reading (\autoref{fig:heatmap_all}) containing data from every combination of LEDs and photodiodes, which can be used to classify hand gestures.
+The FlexIR wristband is made up of 16 segments, each containing 3 LEDs and a photodiode. The wristband is connected to a Teensy 4.1 microcontroller via a flat flexible cable (FFC). The microcontroller sequentially activates each group of 3 LEDs and records the values measured by all the photodiodes (\cref{fig:SensIR}). This produces a 16x16 reading (\cref{fig:heatmap_all}) containing data from every combination of LEDs and photodiodes, which can be used to classify hand gestures.
 
 \section{Wristband Design}
 
@@ -572,12 +569,12 @@ The FlexIR wristband is made up of 16 segments, each containing 3 LEDs and a pho
     \label{fig:FlexIR}
 \end{figure}
 
-The wristband is based on a flexible PCB, shown in \autoref{fig:FlexIR}. There are two main sections: the head and the body. The head of the wristband contains two 74HC595D shift registers and two ULN2803C Darlington arrays which are used to drive the LEDs. It also contains an FFC connector, which is used to connect the device to a microcontroller. The main body of the wristband contains 16 stiffened segments. Each segment contains three LEDs, a photodiode and a transimpedance amplifier. Between the head and the body, there is a large empty section of the PCB which is used for fastening.
+The wristband is based on a flexible PCB, shown in \cref{fig:FlexIR}. There are two main sections: the head and the body. The head of the wristband contains two 74HC595D shift registers and two ULN2803C Darlington arrays which are used to drive the LEDs. It also contains an FFC connector, which is used to connect the device to a microcontroller. The main body of the wristband contains 16 stiffened segments. Each segment contains three LEDs, a photodiode and a transimpedance amplifier. Between the head and the body, there is a large empty section of the PCB which is used for fastening.
 
 \subsection{Stiffeners}
 PCB stiffeners are extra layers of material applied to flexible PCBs to provide rigidity in specific locations. 
 
-Stiffeners are used in FlexIR on the wristband head, as well as each of the 16 segments. This stops the wristband flexing underneath the large SMD components, which helps prevent broken solder joints, shown in \autoref{fig:stiffener}.
+Stiffeners are used in FlexIR on the wristband head, as well as each of the 16 segments. This stops the wristband flexing underneath the large SMD components, which helps prevent broken solder joints, shown in \cref{fig:stiffener}.
 
 \begin{figure}[htp]
     \centering
@@ -589,7 +586,7 @@ Stiffeners are used in FlexIR on the wristband head, as well as each of the 16 s
 \subsection{Fastening}
 Flexible PCBs cannot be stretched, so a mechanism is needed to fix the wristband in place once it is placed around a users wrist. The wrist circumference also varies significantly as users perform different hand gestures.
 
-An early prototype used a pin buckle, similar to a watch strap, to fasten the wristband. However, we found that due to the taper of the wrist, it was useful to fasten the ends of the wristband at a range of angles. Another prototype, shown in \autoref{fig:prototype}, consisted of a Velcro pad glued to a large empty section of the PCB and another pad glued to the stiffeners on the back. This allowed the wristband to fasten around any wrist thickness at any angle, but didn't accommodate for changes in wrist circumference throughout usage.
+An early prototype used a pin buckle, similar to a watch strap, to fasten the wristband. However, we found that due to the taper of the wrist, it was useful to fasten the ends of the wristband at a range of angles. Another prototype, shown in \cref{fig:prototype}, consisted of a Velcro pad glued to a large empty section of the PCB and another pad glued to the stiffeners on the back. This allowed the wristband to fasten around any wrist thickness at any angle, but didn't accommodate for changes in wrist circumference throughout usage.
 
 \begin{figure}[htp]
     \centering
@@ -598,7 +595,7 @@ An early prototype used a pin buckle, similar to a watch strap, to fasten the wr
     \label{fig:prototype}
 \end{figure}
 
-The final design uses one Velcro pad glued to a large empty section of the PCB, and another Velcro pad attached to an elastic strap, which is glued to the stiffeners on the back of the PCB (\autoref{fig:final_strap}). The wristband can be fastened tightly around the wrist, and has the ability to expand and constrict as the user performs gestures.
+The final design uses one Velcro pad glued to a large empty section of the PCB, and another Velcro pad attached to an elastic strap, which is glued to the stiffeners on the back of the PCB (\cref{fig:final_strap}). The wristband can be fastened tightly around the wrist, and has the ability to expand and constrict as the user performs gestures.
 
 \begin{figure}[htp]
     \centering
@@ -608,7 +605,7 @@ The final design uses one Velcro pad glued to a large empty section of the PCB, 
 \end{figure}
 
 \section{Circuit}
-The electronic components on the FlexIR wristband make up two circuits: the LED circuit, used to activate the IR LEDs, and the sensing circuit, used to measure photodiode readings. This section explains the design of the circuits and the components used. See \autoref{section:hardware} for the necessary background.
+The electronic components on the FlexIR wristband make up two circuits: the LED circuit, used to activate the IR LEDs, and the sensing circuit, used to measure photodiode readings. This section explains the design of the circuits and the components used. See \cref{section:hardware} for the necessary background.
 
 \subsection{LED Circuit}
 Each of the 16 wristband segments contain 3 IR emitting LEDs, which are controlled by shift registers and Darlington arrays located on the head of the wristband.
@@ -620,17 +617,17 @@ Each LED and photodiode must be individually controllable. To reduce the number 
 The microcontroller pins can't provide enough power to activate the LEDs, so we used ULN2803C Darlington arrays. Power is supplied to the anode of each LED through a thick shared power trace running through the center of the PCB, and the cathode of each LED is connected to an output of a ULN2803C. When an input on one of the ULN2803C chips is activated, the corresponding output is connected to ground, and current flows through the LED. The inputs of the ULN2803Cs are activated by the outputs of two 74HC595D shift registers.
 
 \subsubsection{LEDs}
-When the microcontroller stores a bit in a shift register, the corresponding output is activated. This activates an input on one of the Darlington arrays, which connects the corresponding output to ground, allowing current to flow through one of the LEDs. Each LED is wired in series with a 47R resistor, which limits the current.
+When the microcontroller stores a bit in a shift register, the corresponding output is activated. This activates an input on one of the Darlington arrays, which connects the corresponding output to ground, allowing current to flow through one of the LEDs. Each LED is wired in series with a 47 \ohm resistor, which limits the current.
 
 \subsection{Sensing Circuit}
 Each of the 16 wristband segments contains a photodiode, which senses the level of IR light, and a transimpedance amplifier, which converts the small output current of the photodiode into a measurable voltage.
 \subsubsection{Photodiodes}
 The photodiode is connected to power through the large central power trace, and to ground through the hatched ground plane. When IR light hits the photodiodes, a small current is generated.
 \subsubsection{Transimpedance Amplifiers}
-The transimpedance amplifiers converts the small currents produced by the photodiodes into larger voltages that can be measured by the microcontroller. The transimpedance amplifiers use TLV9062 op-amps configured with a $100 k\Omega$ feedback resistor and a 1 pF capacitor. The output of the transimpedance amplifiers are connected to the analogue input pins of the microcontroller.
+The transimpedance amplifiers convert the small currents produced by the photodiodes into larger voltages that can be measured by the microcontroller. The transimpedance amplifiers use TLV9062 op-amps configured with a $100 k\Omega$ feedback resistor and a 1 pF capacitor. The output of the transimpedance amplifiers are connected to the analogue input pins of the microcontroller.
 
 \subsection{Microcontroller}
-The wristband connects to a Teensy 4.1 microcontroller via an FFC cable, which is plugged into a connector on the head of the wristband. The microcontroller activates the LEDs and reads from the photodiodes as described in \autoref{sec:operating_principle}.
+The wristband connects to a Teensy 4.1 microcontroller via an FFC cable, which is plugged into a connector on the head of the wristband. The microcontroller activates the LEDs and reads from the photodiodes as described in \cref{sec:operating_principle}.
 
 \begin{listing}[ht]
 \begin{minted}{c}
@@ -656,9 +653,9 @@ void capture() {
 \label{listing:capture_loop}
 \end{listing}
 
-\autoref{listing:capture_loop} shows code which runs on the Teensy, adapted from code provided by GestIR \cite{diamand2025}. The code sequentially activates the LEDs. For each active LED, it records an average of five readings for each photodiode. The Teensy's internal ADCs, with 12 bit resolutions, were used to read the analogue photodiode values.
+\cref{listing:capture_loop} shows code which runs on the Teensy, adapted from code provided by GestIR \cite{diamand2025}. The code sequentially activates the LEDs. For each active LED, it records an average of five readings for each photodiode. The Teensy's internal ADCs, with 12 bit resolutions, were used to read the analogue photodiode values.
 
-To control the LEDs, there is a global \mintinline{c}{uint16_t LEDSequence} variable which keeps track of the bits stored in the shift registers. To enable or disable an LED, the corresponding bit of the \mintinline{c}{LEDSequence} variable is set to 1 or 0 and the data is written to the shift register using the built-in Arduino function \mintinline{c}{shiftOut} (\autoref{listing:led_control}).
+To control the LEDs, there is a global \mintinline{c}{uint16_t LEDSequence} variable which keeps track of the bits stored in the shift registers. To enable or disable an LED, the corresponding bit of the \mintinline{c}{LEDSequence} variable is set to 1 or 0 and the data is written to the shift register using the built-in Arduino function \mintinline{c}{shiftOut} (\cref{listing:led_control}).
 
 \begin{listing}[ht]
 \begin{minted}{c}
@@ -700,7 +697,7 @@ Ground planes are large sheets of conductive material used to connect components
     \label{fig:ground_plane}
 \end{figure}
 
-FlexIR uses a hatched ground plane, shown in \autoref{fig:ground_plane}. This is a ground plane with copper laid out in a mesh pattern rather than a continuous sheet. Hatched ground planes offer the same benefits as regular ground planes while maintaining the flexibility of the PCB.
+FlexIR uses a hatched ground plane, shown in \cref{fig:ground_plane}. This is a ground plane with copper laid out in a mesh pattern rather than a continuous sheet. Hatched ground planes offer the same benefits as regular ground planes while maintaining the flexibility of the PCB.
 
 
 
@@ -709,7 +706,7 @@ FlexIR uses a hatched ground plane, shown in \autoref{fig:ground_plane}. This is
 A major achievement of this project was the design and manufacture of a complex flexible PCB wristband. This was the result of repeated iteration to refine circuit design.
 
 \subsection{Rigid PCB}
-\autoref{fig:rigid_pcb} shows an early prototype based on a rigid PCB, consisting of one shift register, one Darlington array, 8 visible light LEDs and 8 IR photodiodes with transimpedance amplifiers. The visible light LEDs allowed easy testing of the LED control and a IR emitting torch was used to test the sensing circuit, before committing to the higher cost and lead time of a flexible PCB.
+\Cref{fig:rigid_pcb} shows an early prototype based on a rigid PCB, consisting of one shift register, one Darlington array, 8 visible light LEDs and 8 IR photodiodes with transimpedance amplifiers. The visible light LEDs allowed easy testing of the LED control and a IR emitting torch was used to test the sensing circuit, before committing to the higher cost and lead time of a flexible PCB.
 
 \begin{figure}[htp]
     \centering
@@ -719,10 +716,10 @@ A major achievement of this project was the design and manufacture of a complex 
 \end{figure}
 
 \subsection{Op-amps}
-Initial designs of the wristband used one OPA381 \cite{TexasInstruments2004OPA381Amplifier} op-amp for each segment. OPA381s are high precision, low noise op-amps that work well in transimpedance amplifiers with photodiodes. However, the OPA381s were significant contributors to the overall price of the wristband. To reduce the cost, the final design uses the TLV9062 \cite{TexasInstruments2024TLV906xSSystems}, a cheaper, general purpose amplifier with a higher offset voltage and input capacitance. The TLV9062 is also a dual amplifier, with each chip containing two op-amps. In the final wristband design, two adjacent segments share a single TLV9062 chip, shown in \autoref{fig:segments_new}. This halves the number of components needed, further reducing the cost.
+Initial designs of the wristband used one OPA381 \cite{TexasInstruments2004OPA381Amplifier} op-amp for each segment. OPA381s are high precision, low noise op-amps that work well in transimpedance amplifiers with photodiodes. However, the OPA381s were significant contributors to the overall price of the wristband. To reduce the cost, the final design uses the TLV9062 \cite{TexasInstruments2024TLV906xSSystems}, a cheaper, general purpose amplifier with a higher offset voltage and input capacitance. The TLV9062 is also a dual amplifier, with each chip containing two op-amps. In the final wristband design, two adjacent segments share a single TLV9062 chip, shown in \cref{fig:segments_new}. This halves the number of components needed, further reducing the cost.
 
 \subsection{LEDs}
-Initial wristbands were manufactured using one IR17-21C/TR8 LED per segment (\autoref{fig:segments_old}). This allowed us to manufacture multiple iterations of the device, testing other sections of the circuit, without unnecessary spending on higher quality LEDs. Once the circuit design was tested and finalised, final wristbands were manufactured using three brighter, more expensive LEDs per segment (\autoref{fig:segments_new}).
+Initial wristbands were manufactured using one IR17-21C/TR8 LED per segment (\cref{fig:segments_old}). This allowed us to manufacture multiple iterations of the device, testing other sections of the circuit, without unnecessary spending on higher quality LEDs. Once the circuit design was tested and finalised, final wristbands were manufactured using three brighter, more expensive LEDs per segment (\cref{fig:segments_new}).
 
 \begin{figure}[h]
      \centering
@@ -767,7 +764,7 @@ The LEDs selected were:
     \item The \textbf{TSML1020} \cite{VishaySemiconductors2017TSML1020Nm}, with a $\pm 12^\circ$ viewing angle.
 \end{itemize}
 
-Both LEDs have the same current-voltage graphs and the same radiant power (40 mW at 100 mA). Since they are both powered from the same 3.3 V pin on the Teensy, this means they draw the same amount of current and produce the same amount of light energy. The TSML1020 has a much smaller viewing angle of $\pm 12^\circ$, so the radiant intensity is higher, as shown in \autoref{fig:viewing_angle}.
+Both LEDs have the same current-voltage graphs and the same radiant power (40 mW at 100 mA). Since they are both powered from the same 3.3 V pin on the Teensy, this means they draw the same amount of current and produce the same amount of light energy. The TSML1020 has a much smaller viewing angle of $\pm 12^\circ$, so the radiant intensity is higher, as shown in \cref{fig:viewing_angle}.
 
 \begin{figure}[htp]
     \centering
@@ -780,82 +777,6 @@ Both LEDs emit 940 nm wavelength light. Although GestIR identified 860 nm LEDs a
 
 The photodiode chosen was the TEMD7100X01, with a sensitivity that peaks at 950 nm.
 
-
-% \section{Wristband Design}
-
-% \begin{figure}[htp]
-%     \centering
-%     \includegraphics[width=0.8\linewidth]{FlexIR_design.png}
-%     \caption{Design of the FlexIR wristband}
-%     \label{fig:FlexIR}
-% \end{figure}
-
-% The wristband is based on a flexible PCB, shown in \autoref{fig:FlexIR}. There are two main sections: the head and the body.
-
-% The head of the wristband contains two 74HC595D shift registers and two ULN2803C Darlington arrays which are used to drive the LEDs. It also contains an FFC connector, which is used to connect the device to a microcontroller.
-
-% The main body of the wristband contains 16 stiffened segments. Each segment contains an LED, a photodiode and a transimpedance amplifier.
-
-% Between the head and the body, there is a large empty section of the PCB which is used for fastening.
-
-% \subsection{Fastening}
-% Flexible PCBs cannot be stretched, so a mechanism is needed to fix the wristband in place once it is placed around a users wrist. The wrist circumference also varies significantly as users perform different hand gestures.
-
-% An early prototype used a pin buckle, similar to a watch strap, to fasten the wristband. However, we found that due to the taper of the wrist, it was useful to fasten the ends of the wristband at a range of angles.
-
-% Another prototype, shown in \autoref{fig:prototype}, consisted of a Velcro pad glued to a large empty section of the PCB and another pad glued to the stiffeners on the back. This allowed the wristband to fasten around any wrist thickness at any angle, but didn't accommodate for changes in wrist circumference throughout usage. 
-
-% The final design uses one velco pad glued to a large empty section of the PCB, and another Velcro pad attached to an elastic strap, which is glued to the stiffeners on the back of the PCB. The wristband can be fastened tightly around the wrist, and has the ability to expand and constrict as the user performs gestures.
-
-% \begin{figure}[htp]
-%     \centering
-%     \includegraphics[width=0.33\linewidth]{FlexIR-prototype.jpg}
-%     \caption{Initial prototype - the wristband can be fastened at an angle, accommodating for the natural taper of the wrist}
-%     \label{fig:prototype}
-% \end{figure}
-
-% \section{PCB design}
-% \subsection{Shift Registers}
-% Each LED and photodiode must be individually controllable. To reduce the number of wires required between the wristband and microcontroller, we used 74HC595D shift registers for LED activation. Daisy chaining two 74HC595D chips allows for the control of 16 LEDs using 5 output pins of the microcontroller.
-% \subsection{LED Circuit}
-% The LED circuit consists of 16 pairs of LEDs and resistors. The microcontroller pins can't provide enough power to activate the LEDs, so we used ULN2803C Darlington arrays.P ower is supplied to the anode of each LED through a thick shared power trace running through the center of the PCB, and the cathode of each LED is connected to an output of a ULN2803C. When an input on one of the ULN2803C chips is activated, the corresponding output is connected to ground, and current flows through the LED. The inputs of the ULN2803Cs are activated by the outputs of two 74HC595D shift registers.
-% \subsection{Photodiode Circuit}
-% The photodiode circuit is made up of 16 photodiodes, each connected to a transimpedance amplifier. The photodiode circuit is connected to power through the shared central power trace, and is grounded through a large ground plane on the back of the PCB. The transimpedance amplifiers convert the small current produced by the photodiodes into larger voltages that can be read by the microcontroller. They each contain an opamp, a 100k resistor and a 1pF capacitor.
-
-% \section{LED/Photodiode Selection}
-% We chose to investigate the effect of LED viewing angle on classification accuracy. We selected two LEDs with similar forward voltages and the same total radiant power, but different viewing angles (and radiant intensities).
-
-
-% We hypothesize that:
-% \begin{itemize}
-%     \item LEDs with smaller viewing angles will be more effective at penetrating the wrist due to their higher radiant intensity, producing higher quality measurements at photodiodes opposite the active LED.
-%     \item While LEDs with smaller viewing angles will be less effective at penetrating the wrist, the scattering and reflection of light against tendons close to the surface of the wrist will be more apparent, leading to better results from photodiodes adjacent to the active LED.
-% \end{itemize}
-
-% The selected LEDs had to satsify the following constraints:
-
-% \begin{itemize}
-%     \item Constrasting viewing angle
-%     \item Similar radiant power
-%     \item Small SMD package
-% \end{itemize}
-
-% The LEDs selected were:
-% \begin{itemize}
-%     \item The \textbf{VSMB1940X01}, with a $\pm 60^\circ$ viewing angle.
-%     \item The \textbf{TSML1020}, with a $\pm 12^\circ$ viewing angle.
-% \end{itemize}
-
-% Both LEDs have the same current-voltage graphs and the same radiant power (40 mW at 100 mA). Since they are both powered from the same 3.3 V pin on the Teensy, this means they draw the same amount of current and produce the same amount of light energy. The TSML1020 has a much smaller viewing angle of $\pm 12^\circ$, so the radiant intensity is higher, as shown in \autoref{fig:viewing_angle}.
-
-% \begin{figure}[htp]
-%     \centering
-%     \includegraphics[width=0.6\linewidth]{ViewingAngle.png}
-%     \caption{LEDs with the same radiant power and different viewing angles have different radiant intensities}
-%     \label{fig:viewing_angle}
-% \end{figure}
-
-% Both LEDs emit 940 nm wavelength light. Although GestIR identified 860 nm LEDs as particularly effective and 950 nm less effective due to absorption peaks in lipids around 930 nm, the chosen LEDs were the only available options with consistent wavelengths that satisfied the constraints. 950 nm was still shown to be effective, achieving 85.8\% accuracy.
 
 % -----------------------------------------------------------------------------
 
@@ -932,7 +853,7 @@ Each capture consists of 10 readings taken at 0.1 second intervals. The 10 seque
 
 \subsection{Software}
 
-\autoref{fig:software} shows data collection software, adapted from Python code provided by GestIR \cite{diamand2025}. The data collection software used the USB port to send commands to the FlexIR wristband and receive sensor readings. Users were prompted with images of hand gestures, which they were asked to replicate before pressing a key to save the capture. The live sensor readings were also displayed, which allowed for easy debugging of wristband segments. When participants completed a session, the gesture data was saved to a JSON file.
+\cref{fig:software} shows data collection software, adapted from Python code provided by GestIR \cite{diamand2025}. The data collection software used the USB port to send commands to the FlexIR wristband and receive sensor readings. Users were prompted with images of hand gestures, which they were asked to replicate before pressing a key to save the capture. The live sensor readings were also displayed, which allowed for easy debugging of wristband segments. When participants completed a session, the gesture data was saved to a JSON file.
 
 The machine learning models were also adapted from code provided by GestIR \cite{diamand2025}. These consisted of MLPs and CNNs written using TensorFlow, and random forests written using scikit-learn.
 
@@ -951,7 +872,7 @@ The data captured from GestIR and FlexIR is structured, grid-like data. The capt
 
 Convolutional neural networks (CNNs) perform well on structured, grid like data such as images. Because of this, they were expected to be most effective for this application. GestIR evaluated standard CNNs, toroidal CNNs that match the toroidal structure of the captures, as well as standard MLPs.
 
-Despite the toroidal CNNs more closely resembling the shape of the input data, the MLPs performed the best, achieving an average of 85.8\% test accuracy with 950nm LEDs\cite{diamand2025}. We briefly evaluated the standard and toroidal CNNs on FlexIR using the same parameters, and found similar results (\autoref{fig:all_model_accuracies}). This supports GestIRs findings that high model complexity isn't necessary for accurate gesture recognition.
+Despite the toroidal CNNs more closely resembling the shape of the input data, the MLPs performed the best, achieving an average of 85.8\% test accuracy with 950nm LEDs\cite{diamand2025}. We briefly evaluated the standard and toroidal CNNs on FlexIR using the same parameters, and found similar results (\cref{fig:all_model_accuracies}). This supports GestIRs findings that high model complexity isn't necessary for accurate gesture recognition.
 
 \begin{figure}[htp]
     \centering
@@ -965,7 +886,7 @@ In this project, a small but consistent performance boost was achieved by runnin
 To save time, only the best performing models were trained on final experiment data. The final model architecture was an MLP with the same pyramidal architecture as GestIR ($512 \rightarrow 256 \rightarrow 128 \rightarrow 128 \rightarrow 64$), in addition to 50 iterations of Monte Carlo dropout. This architecture is likely oversized for the application, and training and inference were run on a laptop rather than the microcontroller. Model optimisation wasn't the aim of this project, and future research into the effectiveness of models with fewer parameters is necessary to determine the feasibility of classification on-board the microcontroller.
 
 \subsection{Hardware Faults}
-Part way through data collection, the photodiodes on two segments of the $\pm 12^\circ$ wristband developed a fault. Due to time constraints, it wasn't feasible to manufacture a new wristband. \autoref{fig:heatmap_faulty} shows an example of a 16x16 reading recorded with the faulty wristband. Data recorded on those two photodiodes were removed from all participants datasets, resulting in 16x14 capture matrices.
+Part way through data collection, the photodiodes on two segments of the $\pm 12^\circ$ wristband developed a fault. Due to time constraints, it wasn't feasible to manufacture a new wristband. \cref{fig:heatmap_faulty} shows an example of a 16x16 reading recorded with the faulty wristband. Data recorded on those two photodiodes were removed from all participants datasets, resulting in 16x14 capture matrices.
 
 \begin{figure}[htp]
     \centering
@@ -975,13 +896,12 @@ Part way through data collection, the photodiodes on two segments of the $\pm 12
 \end{figure}
 
 \section{Findings}
-This section details the performance of the the models trained to classify the hand gestures. To investigate how informative data for gesture recognition is generated, we created a range of datasets consisting of specific features. \autoref{sec:all_features} analyses the overall model accuracies, comparing the performance of both wristbands, identifying the most commonly misclassified gestures, and investigating how much training data the models need to learn gestures. \autoref{sec:reflection_transmission} restricts the dataset to features designed to isolate data generated by deep tissue interactions from data generated by superficial reflections. \autoref{sec:smartwatch} explores the possibility of future integration into smartwatch devices by analysing accuracies of models trained on sensor data from the dorsal side of the wrist only.
-% \autoref{sec:all_features} analyses the overall model accuracies, comparing the accuracies of the wristbands and identifying the most commonly misclassified gestures. \autoref{sec:reflection_transmission} contains accuracies for models trained only on specific features of the data. \autoref{sec:smartwatch} contains accuracies for models trained on sensor data from the dorsal side of the wrist only, exploring the possibility of future integration into smartwatch devices. For all these experiments, paired $t$-tests were conducted to compare the accuracies of the $\pm 12^\circ$ and $\pm 60^\circ$ wristbands. \autoref{sec:confounding_variables} conducts statistical tests to check for order effects and environmental effects. \autoref{sec:wrist_circumference} shows correlation between the gesture recognition accuracy across all experiments and the participants' wrist circumferences.
+This section details the performance of the the models trained to classify the hand gestures. To investigate how informative data for gesture recognition is generated, we created a range of datasets consisting of specific features. \Cref{sec:all_features} analyses the overall model accuracies, comparing the performance of both wristbands, identifying the most commonly misclassified gestures, and investigating how much training data the models need to learn gestures. \Cref{sec:reflection_transmission} restricts the dataset to features designed to isolate data generated by deep tissue interactions from data generated by superficial reflections. \Cref{sec:smartwatch} explores the possibility of future integration into smartwatch devices by analysing accuracies of models trained on sensor data from the dorsal side of the wrist only.
 
 For all the statistical tests, a significance level of $\alpha=0.05$ was used. The tests are split into seven families:
 \begin{itemize}
     \item Paired $t$-tests comparing the accuracies of the $\pm 12^\circ$ and $\pm 60^\circ$ wristbands when trained using different sets of features
-    \item Paired $t$-tests comparing the accuracies of the $\pm 12^\circ$ and $\pm 60^\circ$ when trained on varying training set sizes
+    \item Paired $t$-tests comparing the accuracies of the $\pm 12^\circ$ and $\pm 60^\circ$ wristbands when trained on varying training set sizes
     \item Paired $t$-tests comparing the performance of models trained on different features to the performance of models trained on all features (including an investigation into the performance drop when removing photodiodes 2 and 3 from the dataset)
     \item Unpaired $t$-tests investigating order effects
     \item Permutation tests investigating environmental effects
@@ -989,7 +909,7 @@ For all the statistical tests, a significance level of $\alpha=0.05$ was used. T
     \item Paired $t$-tests comparing the accuracies of models trained on the full gesture set vs the gesture set excluding pinch gestures
     
 \end{itemize}
-Although the data for these tests all were produced from the same user trials, the seven families represent distinct hypotheses. For each of these families, the $p$-values were corrected for multiple comparisons using the Benjamini-Hochberg procedure. $p_{adj}$ refers to the FDR adjusted $p$-values. 
+Although the data for these tests were all produced from the same user trials, the seven families represent distinct hypotheses. For each of these families, the $p$-values were corrected for multiple comparisons using the Benjamini-Hochberg procedure \cite{Benjaminit1995ControllingTesting}. $p_{adj}$ refers to the FDR adjusted $p$-values. 
 
 \subsection{All Features}
 \label{sec:all_features}
@@ -1002,7 +922,7 @@ Although the data for these tests all were produced from the same user trials, t
 \end{figure}
 
 \subsubsection{Overall Model Accuracy}
-\autoref{fig:accuracy_all} shows the average accuracy of MLPs with Monte Carlo dropout trained on data from the $\pm 12^\circ$ and $\pm 60^\circ$ wristbands across all participants. To account for variation introduced by data partitioning, we trained five models on different stratified splits of the data. The bars show the mean model performance, with error bars representing the standard deviation. 
+\Cref{fig:accuracy_all} shows the average accuracy of MLPs with Monte Carlo dropout trained on data from the $\pm 12^\circ$ and $\pm 60^\circ$ wristbands across all participants. To account for variation introduced by data partitioning, we trained five models on different stratified splits of the data. The bars show the mean model performance, with error bars representing the standard deviation. 
 
 Overall, the $\pm 12^\circ$ wristband performed marginally better, averaging 81.6\% accuracy compared to 78.2\% accuracy with the $\pm 60^\circ$ wristband. However, the results were noisy, varying between participants. 
 
@@ -1024,23 +944,23 @@ A paired $t$-test was conducted to compare the average model performance between
          \caption{Broken segments removed}
          \label{fig:accuracy_broken_segments}
      \end{subfigure}
-    \caption{Accuracy of models trained on all segment data (\autoref{fig:accuracy_all_segments}) and data with faulty segments removed (\autoref{fig:accuracy_broken_segments})}
+    \caption{Accuracy of models trained on all segment data (\cref{fig:accuracy_all_segments}) and data with faulty segments removed (\cref{fig:accuracy_broken_segments})}
     \label{fig:broken_segments_graph}
 \end{figure}
 
 A fault developed with two segments of the wristband halfway through data collection. Because of this, data collected from photodiodes 2 and 3 is removed from all participants, resulting in 16x14 readings.
 
-\autoref{fig:broken_segments_graph} shows the accuracies of initial models trained on the full 16x16 readings compared to the accuracies of models trained on the same participants but with photodiodes 2 and 3 removed.
+\cref{fig:broken_segments_graph} shows the accuracies of initial models trained on the full 16x16 readings compared to the accuracies of models trained on the same participants but with photodiodes 2 and 3 removed.
 
 For the $\pm 60^\circ$ wristband, a paired $t$-test between the accuracies of the models before and after removing the segments revealed that the performance drop was significant ($t$ = 2.966, $p$ = 0.031, $p_{adj}$ = 0.045, Cohen's $d$ = -1.211). The average performance decrease was 1.69\%.
 
-For the $\pm 12^\circ$ wristband, the accuracy drop was not statistically significant. However, the huge increase in standard deviation for the models trained on participant 3 (shown by the error bars in \autoref{fig:broken_segments_graph}) shows that removing the segments produced less robust models.
+For the $\pm 12^\circ$ wristband, the accuracy drop was not statistically significant. However, the huge increase in standard deviation for the models trained on participant 3 (shown by the error bars in \cref{fig:broken_segments_graph}) shows that removing the segments produced less robust models.
 
 Therefore, on a fully functioning wristband, we would expect a small performance boost of 1.69\% on the $\pm 60^\circ$ wristband, which would result in an overall accuracy of 79.9\%. We would also expect more robust and reliable models with lower variance in accuracies.
 
 \subsubsection{Confusion Matrices}
 
-The confusion matrices in \autoref{fig:cf_all} show the predicted and true labels for gestures in the test set. Like SensIR \cite{McIntosh2017SensIR:Reflection} and GestIR \cite{diamand2025}, the most confusion came from the four pinch gestures (pinch\_index, pinch\_middle, pinch\_ring, pinch\_pinkie). These accounted for 43.1\% of misclassifications on the $\pm 12^\circ$ wristband and 41.9\% of the misclassifications on the $\pm 60^\circ$ wristband. This suggests that gestures involving precise finger movement with similar overall hand positions are difficult for IR systems to detect.
+The confusion matrices in \cref{fig:cf_all} show the predicted and true labels for gestures in the test set. Like SensIR \cite{McIntosh2017SensIR:Reflection} and GestIR \cite{diamand2025}, the most confusion came from the four pinch gestures (pinch\_index, pinch\_middle, pinch\_ring, pinch\_pinkie). These accounted for 43.1\% of misclassifications on the $\pm 12^\circ$ wristband and 41.9\% of the misclassifications on the $\pm 60^\circ$ wristband. This suggests that gestures involving precise finger movement with similar overall hand positions are difficult for IR systems to detect.
 
 Models trained on data excluding the pinch gestures achieved average accuracies of 89.0\% and 86.7\% on the $\pm 12^\circ$ and $\pm 60^\circ$ respectively. Paired $t$-tests found the performance increase compared to models trained to classify the full gesture set to be statistically significant ($t$ = -5.992, $p <$ 0.001, $p_{adj} <$ 0.001, Cohen's $d$ = 1.807 for the $\pm 12^\circ$ wristband and $t$ = -8.938, $p <$ 0.001, $p_{adj} <$ 0.001, Cohen's $d$ = 2.695 for the $\pm 60^\circ$ wristband).
 
@@ -1080,7 +1000,7 @@ The total datasets for each participant contain 20 trials of 20 gestures, result
     \label{fig:samples_test}
 \end{figure}
 
-\autoref{fig:samples_test} shows the average model accuracies for participants 1, 2, and 3 for each subsample of training data, with error bars representing the standard deviation. Graphs for all participants can be found in \autoref{appx:samples}. The graphs vary between participants, but in general, the performance increases as the number of training captures increases. The accuracy begins to plateau with the full 280 captures. However, the large error bars show that model performance is highly dependent on specific data splitting. More training data would likely reduce this sensitivity to specific portions of the data and produce more robust models.
+\Cref{fig:samples_test} shows the average model accuracies for participants 1, 2, and 3 for each subsample of training data, with error bars representing the standard deviation. Graphs for all participants can be found in \cref{appx:samples}. The graphs vary between participants, but in general, the performance increases as the number of training captures increases. The accuracy begins to plateau with the full 280 captures. However, the large error bars show that model performance is highly dependent on specific data splitting. More training data would likely reduce this sensitivity to specific portions of the data and produce more robust models.
 
 We conducted paired $t$-tests to compare the accuracies of the $\pm 12^\circ$ and $\pm 60^\circ$ wristbands for these models. This revealed no significant difference between the performance of the wristbands for any of the subsamples of training data, showing no evidence that the LED viewing angle is a factor in how much training data the models need to learn gestures.
      
@@ -1115,7 +1035,7 @@ We define \textbf{reflection features} as readings from photodiodes that are clo
     \label{fig:heatmmaps}
 \end{figure}
 
-To generate data containing only reflection or transmission features, we set the relevant parts of the capture matrix to zero. \autoref{fig:heatmmaps} shows readings containing reflection and transmission features with band width 3 and transmission features with band width 5.
+To generate data containing only reflection or transmission features, we set the relevant parts of the capture matrix to zero. \Cref{fig:heatmmaps} shows readings containing reflection and transmission features with band width 3 and transmission features with band width 5.
 
 \subsubsection{Reflection Features}
 We trained models using data with only reflection features with a band width of 3. A paired $t$-test between these accuracies and the accuracies of models trained on all data wasn't significant for either wristband. This indicates that reflection features generated from photodiodes physically close to the active LEDs provide sufficient information and that transmission features may not be necessary for gesture recognition.
@@ -1131,7 +1051,7 @@ When training on transmission features only, the overall accuracy drops signific
      \label{fig:accuracy_transmission_3}
 \end{figure}
 
-\autoref{fig:accuracy_transmission_3} shows  the average accuracy of MLPs with Monte Carlo dropout trained on data for both wristbands, using only transmission features with a diagonal band of width 3 removed from the captures. The $\pm 12^\circ$ wristband achieves an average accuracy of 58.0\%, and the $\pm 60^\circ$ wristband achieves 31.4\%. Paired $t$-tests between these accuracies and the accuracies of models trained on all features were statistically significant ($t$ = 8.609, $p <$ 0.001, $p_{adj} <$ 0.001, Cohen's $d$ = -2.596 for the $\pm 12^\circ$ wristband and $t$ = 15.284, $p <$ 0.001, $p_{adj} <$ 0.001, Cohen's $d$ = -4.608 for the $\pm 60^\circ$ wristband), showing a clear drop in performance.
+\Cref{fig:accuracy_transmission_3} shows  the average accuracy of MLPs with Monte Carlo dropout trained on data for both wristbands, using only transmission features with a diagonal band of width 3 removed from the captures. The $\pm 12^\circ$ wristband achieves an average accuracy of 58.0\%, and the $\pm 60^\circ$ wristband achieves 31.4\%. Paired $t$-tests between these accuracies and the accuracies of models trained on all features were statistically significant ($t$ = 8.609, $p <$ 0.001, $p_{adj} <$ 0.001, Cohen's $d$ = -2.596 for the $\pm 12^\circ$ wristband and $t$ = 15.284, $p <$ 0.001, $p_{adj} <$ 0.001, Cohen's $d$ = -4.608 for the $\pm 60^\circ$ wristband), showing a clear drop in performance.
 
 We conducted a paired $t$-test to compare the average accuracies of each wristband. This showed a significant difference ($t$ = 5.362, $p <$ 0.001, $p_{adj}$ = 0.002, Cohen's $d$ = -1.617), indicating that when restricted to transmission features, $\pm 12^\circ$ LEDs outperform $\pm 60^\circ$ LEDs.
 
@@ -1142,7 +1062,7 @@ We conducted a paired $t$-test to compare the average accuracies of each wristba
      \label{fig:accuracy_transmission_5}
 \end{figure}
 
-\autoref{fig:accuracy_transmission_5} shows the average accuracy of models trained on transmission features with a band width of 5. The average accuracy of the $\pm 12^\circ$ is 20.8\%, and the average accuracy of the $\pm 60^\circ$ wristband is 10.4\%. Again, the accuracy of both wristbands was lower than when training with all features ($t$ = 21.445, $p <$ 0.001, $p_{adj} <$ 0.001, Cohen's $d$ = -6.467 for the $\pm 12^\circ$ wristband and $t$ = 25.373, $p <$ 0.001, $p_{adj} <$ 0.001, Cohen's $d$ = -7.650).
+\Cref{fig:accuracy_transmission_5} shows the average accuracy of models trained on transmission features with a band width of 5. The average accuracy of the $\pm 12^\circ$ is 20.8\%, and the average accuracy of the $\pm 60^\circ$ wristband is 10.4\%. Again, the accuracy of both wristbands was lower than when training with all features ($t$ = 21.445, $p <$ 0.001, $p_{adj} <$ 0.001, Cohen's $d$ = -6.467 for the $\pm 12^\circ$ wristband and $t$ = 25.373, $p <$ 0.001, $p_{adj} <$ 0.001, Cohen's $d$ = -7.650).
 
 A paired $t$-test also revealed the accuracy of the $\pm 12^\circ$ wristband was significantly higher ($t$ = 3.709, $p$ = 0.004, $p_{adj}$ = 0.012, Cohen's $d$ = -1.118). 
 
@@ -1157,7 +1077,7 @@ Many smartwatches already make use of optical sensing to measure heart rate. A g
      \label{fig:accuracy_smartwatch}
 \end{figure}
 
-\autoref{fig:accuracy_smartwatch} shows the average accuracy of models trained using only data from photodiodes 8, 9, 10, and 11. The $\pm 12^\circ$ wristband had an average accuracy of 67.3\% and the $\pm 60^\circ$ wristband had an average accuracy of 61.1\%. The performance drop of 14.3\% and 17.1\% when compared to models trained on all segments were statistically significant ($t$ = 10.937, $p <$ 0.001, $p_{adj} <$ 0.001, Cohen's $d$ = -3.298 for the $\pm 12^\circ$ wristband and $p$ = 10.474, $p <$ 0.001, $p_{adj} <$ 0.001, Cohen's $d$ = -3.158 for the $\pm 60^\circ$ wristband). A paired $t$-test between the accuracies for both wristbands revealed that the $\pm 12^\circ$ wristband performs significantly better on smartwatch features ($t$ = 2.773, $p$ = 0.020, $p_{adj}$ = 0.039, Cohen's $d$ = -0.836). 
+\Cref{fig:accuracy_smartwatch} shows the average accuracy of models trained using only data from photodiodes 8, 9, 10, and 11. The $\pm 12^\circ$ wristband had an average accuracy of 67.3\% and the $\pm 60^\circ$ wristband had an average accuracy of 61.1\%. The performance drop of 14.3\% and 17.1\% when compared to models trained on all segments were statistically significant ($t$ = 10.937, $p <$ 0.001, $p_{adj} <$ 0.001, Cohen's $d$ = -3.298 for the $\pm 12^\circ$ wristband and $p$ = 10.474, $p <$ 0.001, $p_{adj} <$ 0.001, Cohen's $d$ = -3.158 for the $\pm 60^\circ$ wristband). A paired $t$-test between the accuracies for both wristbands revealed that the $\pm 12^\circ$ wristband performs significantly better on smartwatch features ($t$ = 2.773, $p$ = 0.020, $p_{adj}$ = 0.039, Cohen's $d$ = -0.836). 
 
 \subsection{Correlation With Wrist Circumference}
 \label{sec:wrist_circumference}
@@ -1170,45 +1090,7 @@ Model performance varies between participants, most likely because of anatomical
      \label{fig:accuracy_vs_circumference}
 \end{figure}
 
-Wrist circumference was measured 1.5 cm from the centre of the ulnar styloid (the same place the wristbands were worn during data collection) with the fist clenched. \autoref{fig:accuracy_vs_circumference} shows scatter plots comparing model accuracies with wrist circumferences for models trained on all features. After FDR adjustment, the results were all insignificant, showing there is no evidence of a linear relationship between wrist circumference and wristband performance. Scatter plots for all experiments can be found in \autoref{appx:acc_vs_wrist_size}. 
-
-% Wrist circumference was measured 1.5 cm from the centre of the ulnar styloid (the same place the wristbands were worn during data collection) with the fist clenched. \autoref{fig:accuracy_vs_circumference} shows scatter plots comparing model accuracies with wrist circumferences for models trained on all features. \autoref{tab:correlation_results_12} and \autoref{tab:correlation_results_60} show the results of Pearson correlation tests on the $\pm 12^\circ$ and $\pm 60^\circ$ wristbands. The adjusted $p$-values are all insignificant, showing there is no evidence of a linear relationship between wrist circumference and wristband performance. Scatter plots for all experiments can be found in \autoref{appx:acc_vs_wrist_size}.
-
-% \begin{table}[htp]
-%     \centering
-%     \begin{tabular}{lrrr}
-%         \toprule
-%         Experiment & $r$ & $p$ & $p_{adj}$ \\
-%         \midrule
-%         All Features, All Gestures & -0.112 & 0.743 & 0.999 \\
-%         All Features, Excluding Pinch Gestures & -0.007 & 0.983 & 0.999 \\
-%         Transmission Features (Band Width 3), All Gestures & -0.160 & 0.638 & 0.999 \\
-%         Transmission Features (Band Width 5), All Gestures & 0.000 & 0.999 & 0.999 \\
-%         Reflection Features (Band Width 3), All Gestures & -0.193 & 0.569 & 0.999 \\
-%         Smartwatch Features, All Gestures & -0.011 & 0.975 & 0.999 \\
-%         \bottomrule
-%     \end{tabular}
-%     \caption{Results of the Pearson correlation tests between the model accuracies and wrist circumferences for the $\pm 12\circ$ wristband}
-%     \label{tab:correlation_results_12}
-% \end{table}
-
-% \begin{table}[htp]
-%     \centering
-%     \begin{tabular}{lrrr}
-%         \toprule
-%         Experiment & $r$ & $p$ & $p_{adj}$ \\
-%         \midrule
-%         All Features, All Gestures & 0.056 & 0.869 & 0.999 \\
-%         All Features, Excluding Pinch Gestures & 0.141 & 0.679 & 0.999 \\
-%         Transmission Features (Band Width 3), All Gestures & -0.259 & 0.442 & 0.999 \\
-%         Transmission Features (Band Width 5), All Gestures & -0.069 & 0.840 & 0.999 \\
-%         Reflection Features (Band Width 3), All Gestures & 0.089 & 0.794 & 0.999 \\
-%         Smartwatch Features, All Gestures & -0.114 & 0.738 & 0.999 \\
-%         \bottomrule
-%     \end{tabular}
-%     \caption{Results of the Pearson correlation tests between the model accuracies and wrist circumferences for the $\pm 60\circ$ wristband}
-%     \label{tab:correlation_results_60}
-% \end{table}
+Wrist circumference was measured 1.5 cm from the centre of the ulnar styloid (the same place the wristbands were worn during data collection) with the fist clenched. \Cref{fig:accuracy_vs_circumference} shows scatter plots comparing model accuracies with wrist circumferences for models trained on all features. After FDR adjustment, the results were all insignificant, showing there is no evidence of a linear relationship between wrist circumference and wristband performance. Scatter plots for all experiments can be found in \cref{appx:acc_vs_wrist_size}. 
 
 \subsection{Confounding Variables}
 \label{sec:confounding_variables}
@@ -1224,7 +1106,7 @@ Permutation tests were used to investigate any environmental effects. Permutatio
 After FDR adjustment, the results of the permutation tests were insignificant for all experiments on both wristbands. This shows there was no evidence of any environmental effects on wristband performance.
 
 \subsection{Summary of Results}
-\autoref{tab:acc_summary} shows a summary of the classification accuracies of models trained on wristband data. \autoref{tab:results_summary} shows a summary of the significance of all the statistical tests conducted in \autoref{chapter:experiment}.
+\Cref{tab:acc_summary} shows a summary of the classification accuracies of models trained on wristband data. \Cref{tab:results_summary} shows a summary of the significance of all the statistical tests conducted in \cref{chapter:experiment}.
 
 \begin{table}[htp]
     \centering
@@ -1284,33 +1166,34 @@ After FDR adjustment, the results of the permutation tests were insignificant fo
 \end{table}
 
 
-% The results of the permutation tests for $\pm 12^\circ$ and $\pm 60^\circ$ wristbands are shown in \autoref{tab:location_effects_12} and \autoref{tab:location_effects_60}. The $p_{adj}$-values are all insignificant, showing that there was no evidence any environmental effects on wristband performance. 
-
-
-% On the $\pm 12^\circ$ wristband, the Kruskal-Wallis H test and permutation test both produced $H$ statistics of 0 and $p$-values of 1, indicating the distribution of accuracies across locations is indistinguishable from random chance. On the $\pm 60^\circ$ wristband, the Kruskal-Wallis H test produced a $H$ statistic of 2.734 and $p$-value of 0.255, and the permutation test produced a $H$ statistic of 2.734 and a $p$-value of 0.323. This indicates there is no evidence of significant environmental effect on the wristband performance
-
-
 
 \chapter{Discussion}
 \label{chap:discussion}
 
+% When IR light travels through biological tissue, three main phenomena occur: reflection off of boundaries between materials, absorption into materials, and scattering. The intent of IR based gesture recognition systems is often to target dynamic tissue types, such as muscles and tendons, which move as the user performs gestures \cite{McIntosh2017SensIR:Reflection} \cite{diamand2025} \cite{Khalikov2026WearableControl}. This is due to the assumption that reflection and scattering off these tissues as they move generate the most informative features for gesture recognition. However, our results indicate that, for the low power SMD LEDs used in this project, the most informative data is generated by reflection and scattering on the surface of the skin, or very shallow in the wrist tissue.
+
+% The larger the distance between the source and detector on the surface of the skin, the deeper the detected photons travelled on their path through the tissue - Yang et al. \cite{} demonstrated that a 2.5 mm source-detector distance captures light from only the skin and fat layers, whereas a 30 mm source-detector distance captures light from deeper muscle layers. On the FlexIR wristband, the shortest distance between LEDs and photodiodes on the same segment is 10 mm. For transmission features with a band width of 3, the smallest LED-photodiode distance is 20 mm, and for transmission features with a band width of 5, the distance is 28 mm.
+
+
 \section{Tissue Penetration and Reflection}
-When IR light travels through biological tissue, three main phenomena occur: reflection off of boundaries between materials, absorption into materials, and scattering. Generally, the larger the distance between the source and detector on the surface of the skin, the deeper the detected photons travelled on their path through the tissue. The intent of IR based gesture recognition systems is often to target dynamic tissue types, such as muscles and tendons, which move as the user performs gestures \cite{McIntosh2017SensIR:Reflection} \cite{diamand2025} \cite{Khalikov2026WearableControl}. This is due to the assumption that reflection and scattering off these tissues as they move generate the most informative features for gesture recognition. However, our results indicate that, for the low power SMD LEDs used in this project, the most informative data is generated by reflection and scattering on the surface of the skin, or very shallow in the wrist tissue.
+When IR light travels through biological tissue, three main phenomena occur: reflection off of boundaries between materials, absorption into materials, and scattering \cite{diamand2025}. Generally, the larger the distance between the source and detector on the surface of the skin, the deeper the detected photons travelled on their path through the tissue - Yang et al. \cite{Yang2007QuantitativeSpectroscopy} demonstrated that, on the forearm, a 2.5 mm source-detector distance captures light from only the skin and fat layers, whereas a larger source-detector distance of 30 mm captures light from deeper muscle layers. On the FlexIR wristband, the shortest distance between LEDs and photodiodes on the same segment is 10 mm. For transmission features with a band width of 3, the smallest LED-photodiode distance is 20 mm, and for transmission features with a band width of 5, the distance is 28 mm. Based on this, the models trained on transmission features rely on deep tissue interactions, whereas the models trained on reflection features use shallow reflections from skin and tendons.
 
-Overall, the $\pm 12^\circ$ and $\pm 60^\circ$ angle LEDs achieved similar performance.
+% Beac The intent of IR based gesture recognition systems is often to target dynamic tissue types, such as muscles and tendons, which move as the user performs gestures\cite{McIntosh2017SensIR:Reflection} \cite{diamand2025} \cite{Khalikov2026WearableControl}. Previous work has shown 
 
-When we forced the models to learn transmission features, the $\pm 12^\circ$ wristband performed significantly better than the $\pm 60^\circ$ wristband. This is likely because the higher radiant intensity results in a higher photon density - this increases the number of photons that survive a long scattering path through deep tissue and are detected by photodiodes.
+% Our results indicate that, for the lower power SMD LEDs used in this project, the most informative data is generated by shallow reflection and scattering. This is likely because tendons, located just beneath the fat layer, shift significantly during finger and wrist movement, providing information about the currently performed gesture. When we forced the models to learn transmission features generated from deeper tissue interaction, the $\pm 12^\circ$ wristband performed significantly better than the $\pm 60^\circ$ wristband. This is likely because the higher radiant intensity results in a higher photon density - this increases the number of photons that survive a long scattering path through deep tissue and are detected by photodiodes. Despite this, the overall accuracy of both wristbands was lower when trained on only transmission features. This suggests that detecting gestures from deep tissue interactions is inefficient 
 
-Despite this, the overall accuracy of both wristbands was lower when trained on only transmission features. This is likely because of the higher signal-to-noise ratio involved with detecting light that has travelled deep into tissue. Reflection features generated by photodiodes close to active LEDs (either detecting photons that immediately reflected off the surface of the skin, or reflected/scattered in shallow tissue) produced the most crucial data for gesture detection. Further research is needed to determine if increasing the brightness of LEDs allows for better feature generation from deep tissue, or if surface reflections are important regardless of LED power.
+% When IR light travels through biological tissue, three main phenomena occur: reflection off of boundaries between materials, absorption into materials, and scattering. Generally, the larger the distance between the source and detector on the surface of the skin, the deeper the detected photons travelled on their path through the tissue \cite{}. The intent of IR based gesture recognition systems is often to target dynamic tissue types, such as muscles and tendons, which move as the user performs gestures \cite{McIntosh2017SensIR:Reflection} \cite{diamand2025} \cite{Khalikov2026WearableControl}. This is due to the assumption that reflection and scattering off these tissues as they move generate the most informative features for gesture recognition. However, our results indicate that, for the low power SMD LEDs used in this project, the most informative data is generated by reflection and scattering on the surface of the skin, or very shallow in the wrist tissue.
 
-Increasing the overall brightness and optical power of the LEDs would lead to high peak radiant intensities even in wider viewing angle LEDs, which would generate better transmission features and likely improve results further. However, the optical power of LEDs should be limited for safety and efficiency:
+Overall, the $\pm 12^\circ$ and $\pm 60^\circ$ angle LEDs achieved similar performance, suggesting that in general, viewing angle isn't a factor in how well IR sensing systems can classify gestures. However, when we forced the models to learn transmission features, the $\pm 12^\circ$ wristband performed significantly better than the $\pm 60^\circ$ wristband, showing that a higher radiant intensity is important when generating features from deep tissue. This is likely because the higher radiant intensity results in a higher photon density, which increases the number of photons that survive long scattering paths through deep tissue. Despite this, the overall accuracy of both wristbands was lower when trained on only transmission features, showing that reflection features which detected more superficial interactions with skin and tendons produced the most crucial data for gesture detection.
+
+Increasing the overall brightness and optical power of the LEDs would lead to high peak radiant intensities even in wider viewing angle LEDs, which would likely generate better transmission features and improve results further. However, the optical power of LEDs should be limited for safety and efficiency:
 
 \begin{itemize}
     \item The optical power should be limited to protect the skin and tissue from thermal injury. The operating principle of the FlexIR wristband means there was an inherent low duty cycle of at most 6.25\%, since each of the 16 groups of LEDs were activated then deactivated sequentially. This, combined with the relatively low power of the LEDs used, means there was no risk of thermal injury from the IR light. Any future designs using higher power IR emitters would require careful comparison with appropriate guidelines, e.g, the ICNIRP Guidelines on Limits of Exposure to Incoherent Visible and Infrared Radiation \cite{Ziegelberger2013ICNIRPRadiation}.
     \item Although different IR emitters achieve different levels of efficiency, in general a higher optical power requires a higher electrical power consumption. Constraining the amount of energy devices use is an important design consideration when integrating these systems into battery powered wearable technologies.
 \end{itemize}
 
-One promising application of this technology is future integration into smart-watch style devices. Gesture recognition using only sensors on the dorsal side would increase the practicality of this, since hardware could be fully incorporated into the watch head without the need for sensors around the wrist. However, the models we trained on data only the dorsal segments performed poorly, with the $\pm 12^\circ$ wristband only achieving 67\% accuracy. This suggests that for devices to accurately distinguish subtle gestures, LEDs and sensors are required around more of the wrist.
+One promising application of this technology is future integration into smartwatch-style devices. Gesture recognition using only sensors on the dorsal side would increase the practicality of this, since hardware could be fully incorporated into the watch head without the need for sensors around the wrist. However, the models we trained on data only the dorsal segments performed poorly, with the $\pm 12^\circ$ wristband only achieving 67\% accuracy. This suggests that for devices to accurately distinguish subtle gestures, LEDs and sensors are required around more of the wrist. The $\pm 12^\circ$ also performed significantly better than the $\pm 60^\circ$ wristband, showing that when the number and placement of the segments are constrained, viewing angle affects model performance.
 
 The performance of the wristbands varied between participants, likely due to anatomical differences. One hypothesis was that wrist circumference was a factor in how effectively IR light penetrates tissue. However, no significant correlation was found between wrist circumference and model performance for any of the experiments. This is likely because the features informing gesture recognition are mostly generated by reflection onto nearby photodiodes, rather than transmission directly through the wrist. Further research investigating the effects of other anatomical differences is needed to determine the source of the variation between participants.
 
@@ -1332,13 +1215,13 @@ The performance of the wristbands varied between participants, likely due to ana
     \label{fig:led_types}
 \end{figure}
 
-Although the LEDs we compared were matched for radiant power and wavelength, the physical package size differs (see \autoref{fig:led_types}). This introduces a small potential confounding variable - different package sizes may slightly alter the way the LEDs couple with the skin, possibly influencing the interaction of IR light with the wrist tissue. Although the data strongly suggests that the higher radiant intensity of the $\pm 12^\circ$ LEDs produces better transmission features, we cannot entirely isolate this effect from the package size and sensor-skin coupling. However, based on FlexIR's findings that slight variations in skin coupling did not affect the accuracy, and the large magnitude of the performance difference in transmission features, this effect is considered negligible.
+Although the LEDs we compared were matched for radiant power and wavelength, the physical package size differed (see \cref{fig:led_types}). This introduces a small potential confounding variable - different package sizes may slightly alter the way the LEDs couple with the skin, possibly influencing the interaction of IR light with the wrist tissue. Although the data strongly suggests that the higher radiant intensity of the $\pm 12^\circ$ LEDs produces better transmission features, we cannot entirely isolate this effect from the package size and sensor-skin coupling. However, based on FlexIR's findings that slight variations in skin coupling did not affect the accuracy, and the large magnitude of the performance difference in transmission features, this effect is considered negligible.
 
 \section{Gesture Set}
 The gesture set used to evaluate FlexIR contained a wide range hand gestures, spanning from large distinct hand and wrist positions to subtle finger movements. The most confusion came from the pinch gestures (pinch\_index, pinch\_middle, pinch\_ring and pinch\_pinkie) - for models trained on all features, pinches accounted for 43.1\% of the misclassifications on the  $\pm 12^\circ$ wristband and 41.9\% of the misclassifications on the  $\pm 60^\circ$ wristband. When trained on data excluding the pinch gestures, the model performances increased from 81.6\% to 89.0\% and 78.2\% to 86.7\% on the $\pm 12^\circ$ and $\pm 60^\circ$ wristbands respectively. This mirrors findings from GestIR and SensIR, confirming their conclusions that subtle finger movements are inherently difficult for IR sensing systems to detect.
 
 \section{Hardware Challenges}
-One of the main contributions of this project is the design and evaluation of a complex, novel flexible PCB wristband. This project used an iterative design process, shown in \autoref{section:wristband_iteration}. The main challenge when iterating on the design was the manufacturing time - we used JLCPCB to manufacture and assemble the wristbands, and the lead time between uploading schematics and receiving hardware was a major bottleneck.
+One of the main contributions of this project is the design and evaluation of a complex, novel flexible PCB wristband. This project used an iterative design process, shown in \cref{section:wristband_iteration}. The main challenge when iterating on the design was the manufacturing time - we used JLCPCB to manufacture and assemble the wristbands, and the lead time between uploading schematics and receiving hardware was a major bottleneck.
 
 The project was also plagued by hardware issues and malfunctions:
 
@@ -1352,12 +1235,12 @@ Repeated flexing of the wristband during user studies caused some traces to brea
 
 \textbf{Manufacturing Errors}
 
-Part way through data collection, the pair of wristbands being used broke due to repeated flexing. When we switched to the pair of backup wristbands, we identified a single op-amp with the wrong orientation. This produced a short that prevented the rest of the segments from operating. It was unfeasible to rotate the op-amp due to its small pitch, so we removed it, preventing us from reading photodiode values form segments 2 and 3. Because of this, all models are trained on 16x14 capture matrices, with the photodiode readings from segments 2 and 3 removed. This resulted in a small but consistent drop in accuracy when compared to models trained on full 16x16 capture matrices, shown in \autoref{fig:broken_segments_graph}. Because of this, we would expect a fully functioning wristband to achieve a small performance boost on all results obtained in this experiment.
+Part way through data collection, the pair of wristbands being used broke due to repeated flexing. When we switched to the pair of backup wristbands, we identified a single op-amp with the wrong orientation. This produced a short that prevented the rest of the segments from operating. It was unfeasible to rotate the op-amp due to its small pitch, so we removed it, preventing us from reading photodiode values form segments 2 and 3. Because of this, all models are trained on 16x14 capture matrices, with the photodiode readings from segments 2 and 3 removed. This resulted in a small but consistent drop in accuracy when compared to models trained on full 16x16 capture matrices, shown in \cref{fig:broken_segments_graph}. Because of this, we would expect a fully functioning wristband to achieve a small performance boost on all results obtained in this experiment.
 
 Wearable devices in real world environments are highly susceptible to everyday wear and tear. The fact that FlexIR was still able to operate with two broken photodiodes, showing only a slight performance drop in one of the wristbands, demonstrates the resilience of infrared sensing systems.
 
 \section{Theoretical Performance}
-Due to the removal of two photodiode readings from the data, there was a small drop in accuracy for the $\pm 60^\circ$ wristband. On a fully functioning wristband, we would expect a performance boost of 1.69\%, resulting in an average accuracy of 79.9\%. Also, to satisfy the constraints of viewing angle and radiant power, LEDs with 940 nm wavelengths were chosen. The wavelength study conducted in GestIR \cite{diamand2025} identified 950 nm as a less effective wavelength due to the absorption peak in lipids between 930 nm and 1040 nm. 890 nm LEDs achieved a 3.4\% performance increase over 950 nm LEDs. Applying these increases to our results gives theoretical accuracies shown in \autoref{tab:theoretical_accs}.
+Due to the removal of two photodiode readings from the data, there was a small drop in accuracy for the $\pm 60^\circ$ wristband. On a fully functioning wristband, we would expect a performance boost of 1.69\%, resulting in an average accuracy of 79.9\%. Also, to satisfy the constraints of viewing angle and radiant power, LEDs with 940 nm wavelengths were chosen. The wavelength study conducted in GestIR \cite{diamand2025} identified 950 nm as a less effective wavelength due to the absorption peak in lipids between 930 nm and 1040 nm. 890 nm LEDs achieved a 3.4\% performance increase over 950 nm LEDs. Applying these increases to our results gives theoretical accuracies shown in \cref{tab:theoretical_accs}.
 
 \begin{table}[htp]
     \centering
@@ -1385,7 +1268,7 @@ In this project, participants collected data for each wristband in one session, 
 \noindent
 This project achieved all its intended research goals.
 
-The first major achievement is the design, manufacture, and evaluation of a new flexible PCB based gesture recognition wristband. Previous designs of similar gesture recognition systems have been useful as research platforms investigating the field of gesture recognition, but lack in practicality and reliability. FlexIRs design has multiple benefits:
+The first major achievement is the design, manufacture, and evaluation of a new flexible PCB based gesture recognition wristband. Previous designs of similar gesture recognition systems have been useful as research platforms investigating the field of gesture recognition, but lack in practicality and reliability. FlexIR's design has multiple benefits:
 \begin{itemize}
     \item Wristbands can be produced using third party PCBA services. This makes high quality hardware more easily obtainable, reducing the skill level needed to run a trial and enabling future data collection and experiments on a wider range of participants without the overhead of building wristbands by hand.
     \item The reduced form factor and improved reliability moves the device closer to a product capable of real world gesture recognition
@@ -1397,7 +1280,7 @@ A secondary achievement of this project was a user study comparing the effective
 \begin{itemize}
     \item Confirmed previous findings that traditional MLPs outperform more complex models like CNNs
     \item Results suggest that a narrow viewing angle LED with a higher peak radiant intensity generates better features from deeper tissue, although further research is required to completely isolate this from LED package size.
-    \item The most crucial data for gesture recognition comes from readings with small LED - sensor distances, suggesting shallow reflections generate the best features
+    \item The most crucial data for gesture recognition comes from readings with small LED-photodiode distances, suggesting shallow reflections generate the best features
     \item LED viewing angle isn't a factor in how much training data models need to learn gestures
     \item IR sensing systems based only on the dorsal side of the wrist are less effective than devices surrounding the full circumference of the wrist, suggesting that future smartwatch designs should incorporate sensing hardware around the strap rather than just in the watch head.
 \end{itemize}
@@ -1414,7 +1297,7 @@ Although the FlexIR wristband was heavily iterated to optimise practicality and 
 \end{itemize}
 
 \subsection{Wristband Ergonomics}
-In the current design, the LEDs and photodiodes make direct contact with the wrist. Over long sessions, this becomes uncomfortable and can leave indentations in the skin. Encasing the wristband in a soft material, e.g. silicon, could improve the ergonomics. However, research is necessary into the effect of introducing additional materials between the sensing circuits and the skin.
+In the current design, the LEDs and photodiodes make direct contact with the wrist. Over long sessions, this becomes uncomfortable and can leave indentations in the skin. Encasing the wristband in a soft material, e.g., silicon, could improve the ergonomics. However, research is necessary into the effect of introducing additional materials between the sensing circuits and the skin.
 
 \subsection{On-board processing}
 The current design also contains no on-board processing capabilities. During use, the device is plugged into a microcontroller via an FFC cable which controls the LEDs and reads from the photodiodes. This communicates with a computer, which performs model training and inference, through a USB cable. Performing inference on the wristband would remove the need for physical tethering to a computer or microcontroller, improving practicality. There are two main challenges in achieving this:
@@ -1504,7 +1387,7 @@ These extensions would gain more practical insights into optimal hardware for in
 AI has been used sparingly in this project to enable rapid iteration. Where small portions of AI generated code are used, they have been thoroughly checked and edited.
 
 \begin{itemize}
-    \item IntelliJ's code completion, which is powered by an AI assistant, was used to assist in the of the Python software.
+    \item IntelliJ's code completion, which is powered by an AI assistant, was used to assist in the development of the Python software.
     \item Overleaf's Writefull, which uses custom language models trained on research papers and fine-tuned to LaTeX, was used for spelling and grammar suggestions.
     \item GPT-5.2 and Gemini 3.1 Pro were used to assist in writing code to generate graphs and visualisations using matplotlib.
 \end{itemize}
